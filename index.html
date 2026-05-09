@@ -4,17 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jiga bhai | ગુજરાતી વેપારી</title>
+    
+    <!-- Meta Pixel Code (Isse Meta track karega ki kisne join kiya) -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    
+    // Yahan apna Pixel ID daal dena
+    fbq('init', 'YOUR_PIXEL_ID_HERE'); 
+    fbq('track', 'PageView');
+    </script>
+    
     <style>
         body { font-family: 'Segoe UI', Arial, sans-serif; background-color: #0b0f19; color: white; text-align: center; padding: 40px 20px; margin: 0; }
-        .container { max-width: 500px; margin: auto; border: 1px solid #1e293b; padding: 30px; border-radius: 20px; background: #111827; }
-        .brand-name { color: #00d2ff; font-size: 2.2rem; font-weight: bold; margin-bottom: 5px; }
-        .sub-brand { color: #facc15; font-size: 1.1rem; margin-bottom: 25px; }
-        .features { text-align: left; margin-bottom: 30px; background: #1f2937; padding: 15px; border-radius: 10px; }
-        .features p { margin: 8px 0; font-size: 1rem; }
-        .btn-join { background: #22c55e; color: white; padding: 16px 30px; font-size: 1.3rem; text-decoration: none; border-radius: 50px; font-weight: bold; display: block; transition: 0.3s; box-shadow: 0 4px 15px rgba(34, 197, 94, 0.4); }
-        .btn-join:hover { transform: scale(1.03); background: #16a34a; }
-        .support-bot { position: fixed; bottom: 20px; right: 20px; background: #0088cc; color: white; padding: 12px 20px; border-radius: 30px; text-decoration: none; font-size: 0.9rem; font-weight: bold; box-shadow: 0 4px 10px rgba(0,0,0,0.5); display: flex; align-items: center; gap: 8px; }
+        .container { max-width: 500px; margin: auto; border: 1px solid #1e293b; padding: 30px; border-radius: 20px; background: #111827; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .brand-name { color: #00d2ff; font-size: 2.5rem; font-weight: bold; margin-bottom: 5px; }
+        .sub-brand { color: #facc15; font-size: 1.3rem; margin-bottom: 25px; font-weight: 600; }
+        .features { text-align: left; margin-bottom: 30px; background: #1f2937; padding: 20px; border-radius: 15px; border-left: 4px solid #facc15; }
+        .features p { margin: 12px 0; font-size: 1.1rem; display: flex; align-items: center; gap: 10px; }
+        .btn-join { background: linear-gradient(135deg, #22c55e, #16a34a); color: white; padding: 18px 30px; font-size: 1.4rem; text-decoration: none; border-radius: 50px; font-weight: bold; display: block; transition: 0.3s; box-shadow: 0 6px 20px rgba(34, 197, 94, 0.4); }
+        .btn-join:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(34, 197, 94, 0.6); }
+        .support-bot { position: fixed; bottom: 20px; right: 20px; background: #0088cc; color: white; padding: 12px 25px; border-radius: 30px; text-decoration: none; font-size: 1rem; font-weight: bold; box-shadow: 0 4px 15px rgba(0,0,0,0.5); display: flex; align-items: center; gap: 8px; z-index: 1000; }
+        .disclaimer { margin-top: 25px; color: #64748b; font-size: 0.8rem; line-height: 1.4; }
     </style>
+
+    <script>
+        // Meta Ads Policy ke liye 'Lead' track karne ka function
+        function trackJoin() {
+            fbq('track', 'Lead'); 
+            // 0.5 second ka delay taaki Pixel data chala jaye phir Telegram khule
+            setTimeout(function(){
+                window.location.href = "https://t.me/+4oN8IsDUF1FhNjY1";
+            }, 500);
+            return false;
+        }
+    </script>
 </head>
 <body>
 
@@ -23,19 +53,22 @@
         <div class="sub-brand">ગુજરાતી વેપારી</div>
         
         <div class="features">
-            <p>✅ NIFTY 50 & BANKNIFTY Analysis</p>
-            <p>✅ Daily Support & Resistance Levels</p>
-            <p>✅ Indian Stock Market Strategies</p>
-            <p>✅ No Forex - Only Pure Indian Trading</p>
+            <p>📊 <b>NIFTY & BANKNIFTY</b> Analysis</p>
+            <p>⚡ Daily Levels & Chart Patterns</p>
+            <p>🇮🇳 Pure Indian Market Trading</p>
+            <p>🚫 No Forex | No Crypto</p>
         </div>
 
-        <!-- Your Telegram Link Integrated -->
-        <a href="https://t.me/+4oN8IsDUF1FhNjY1" class="btn-join">JOIN FREE TELEGRAM</a>
+        <!-- Yahan click karte hi Meta ko 'Lead' ka signal jayega -->
+        <a href="#" class="btn-join" onclick="return trackJoin()">JOIN FREE TELEGRAM</a>
         
-        <p style="margin-top: 20px; color: #94a3b8; font-size: 0.8rem;">Join 100% Free Analysis Channel</p>
+        <div class="disclaimer">
+            *આ ચેનલ ફક્ત શૈક્ષણિક હેતુ માટે છે. અમે SEBI રજિસ્ટર્ડ નથી.<br>
+            (This channel is for educational purposes only.)
+        </div>
     </div>
 
-    <!-- Your Support Bot Integrated -->
+    <!-- Support Bot Link -->
     <a href="https://t.me/Jiga_Bhai_Gujrati_Trader_bot" class="support-bot">
         <span>💬 Support Bot</span>
     </a>
