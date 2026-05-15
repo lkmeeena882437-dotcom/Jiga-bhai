@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="gu">
 <head>
-    <!-- Meta Pixel Code -->
+
+<!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -11,210 +12,303 @@ n.queue=[];t=b.createElement(e);t.async=!0;
 t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
+
 fbq('init', '960915640082486');
 fbq('track', 'PageView');
 </script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=960915640082486&ev=PageView&noscript=1"
-/></noscript>
+
+<noscript>
+<img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=960915640082486&ev=PageView&noscript=1"/>
+</noscript>
 <!-- End Meta Pixel Code -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Jiga Bhai | Gujarati Trader</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg-color: #05080a;
-            --card-bg: #0f172a;
-            --accent-blue: #00d2ff;
-            --accent-yellow: #ffcc00;
-            --btn-green: #00c853;
-            --text-main: #ffffff;
-        }
 
-        * { box-sizing: border-box; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow-x: hidden;
-        }
+<title>Jiga Bhai | Gujarati Trader</title>
 
-        .main-container {
-            width: 95%;
-            max-width: 400px;
-            background: linear-gradient(145deg, #111827, #030712);
-            border-radius: 30px;
-            padding: 15px;
-            text-align: center;
-            border: 1px solid rgba(0, 210, 255, 0.15);
-            box-shadow: 0 0 40px rgba(0, 210, 255, 0.08);
-            margin: 10px 0;
-        }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-        @keyframes glowText {
-            0% { text-shadow: 0 0 10px rgba(0,210,255,0.4); }
-            50% { text-shadow: 0 0 25px rgba(0,210,255,0.8); }
-            100% { text-shadow: 0 0 10px rgba(0,210,255,0.4); }
-        }
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
 
-        .profile-img {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            border: 2px solid var(--accent-blue);
-            box-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
-            margin-bottom: 8px;
-            object-fit: cover;
-        }
+<style>
 
-        h1 {
-            margin: 0;
-            font-size: 28px;
-            font-weight: 900;
-            animation: glowText 2s infinite ease-in-out;
-            background: linear-gradient(to bottom, #fff, #00d2ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+:root{
+    --bg-color:#05080a;
+    --card-bg:#0f172a;
+    --accent-blue:#00d2ff;
+    --accent-yellow:#ffcc00;
+    --btn-green:#00c853;
+    --text-main:#ffffff;
+}
 
-        .subtitle {
-            color: var(--accent-yellow);
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 12px;
-            display: block;
-        }
+*{
+    box-sizing:border-box;
+}
 
-        .proof-section {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 15px;
-            overflow-x: auto;
-            padding: 5px;
-            scrollbar-width: none;
-        }
-        .proof-section::-webkit-scrollbar { display: none; }
+body{
+    margin:0;
+    padding:0;
+    font-family:'Inter',sans-serif;
+    background-color:var(--bg-color);
+    color:var(--text-main);
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow-x:hidden;
+}
 
-        .proof-img {
-            width: 48%;
-            flex-shrink: 0;
-            border-radius: 12px;
-            border: 1px solid rgba(255,255,255,0.1);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-            transition: transform 0.3s;
-        }
+.main-container{
+    width:95%;
+    max-width:400px;
+    background:linear-gradient(145deg,#111827,#030712);
+    border-radius:30px;
+    padding:15px;
+    text-align:center;
+    border:1px solid rgba(0,210,255,0.15);
+    box-shadow:0 0 40px rgba(0,210,255,0.08);
+    margin:10px 0;
+}
 
-        .proof-img:hover { transform: scale(1.05); }
+@keyframes glowText{
+    0%{
+        text-shadow:0 0 10px rgba(0,210,255,0.4);
+    }
+    50%{
+        text-shadow:0 0 25px rgba(0,210,255,0.8);
+    }
+    100%{
+        text-shadow:0 0 10px rgba(0,210,255,0.4);
+    }
+}
 
-        .features {
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 15px;
-            padding: 12px;
-            margin-bottom: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
+.profile-img{
+    width:80px;
+    height:80px;
+    border-radius:50%;
+    border:2px solid var(--accent-blue);
+    box-shadow:0 0 15px rgba(0,210,255,0.3);
+    margin-bottom:8px;
+    object-fit:cover;
+}
 
-        .feat {
-            display: flex;
-            align-items: center;
-            font-size: 13px;
-            margin-bottom: 6px;
-            font-weight: 600;
-            text-align: left;
-        }
-        .feat i { margin-right: 10px; font-style: normal; }
+h1{
+    margin:0;
+    font-size:28px;
+    font-weight:900;
+    animation:glowText 2s infinite ease-in-out;
+    background:linear-gradient(to bottom,#fff,#00d2ff);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
 
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(0, 200, 83, 0.6); transform: scale(1); }
-            70% { box-shadow: 0 0 0 12px rgba(0, 200, 83, 0); transform: scale(1.02); }
-            100% { box-shadow: 0 0 0 0 rgba(0, 200, 83, 0); transform: scale(1); }
-        }
+.subtitle{
+    color:var(--accent-yellow);
+    font-size:20px;
+    font-weight:700;
+    margin-bottom:12px;
+    display:block;
+}
 
-        .btn {
-            display: block;
-            background: var(--btn-green);
-            color: white;
-            text-decoration: none;
-            padding: 14px;
-            border-radius: 50px;
-            font-weight: 800;
-            font-size: 16px;
-            margin: 8px 0;
-            animation: pulse 2s infinite;
-            text-transform: uppercase;
-        }
+.proof-section{
+    display:flex;
+    gap:10px;
+    margin-bottom:15px;
+    overflow-x:auto;
+    padding:5px;
+    scrollbar-width:none;
+}
 
-        .btn-white {
-            background: #ffffff;
-            color: #000;
-            animation: none;
-            box-shadow: 0 4px 12px rgba(255,255,255,0.15);
-        }
+.proof-section::-webkit-scrollbar{
+    display:none;
+}
 
-        .support-link {
-            display: inline-flex;
-            align-items: center;
-            margin-top: 10px;
-            color: var(--accent-blue);
-            text-decoration: none;
-            font-size: 12px;
-            font-weight: 700;
-            background: rgba(0, 210, 255, 0.08);
-            padding: 6px 14px;
-            border-radius: 20px;
-            border: 1px solid rgba(0, 210, 255, 0.2);
-        }
+.proof-img{
+    width:48%;
+    flex-shrink:0;
+    border-radius:12px;
+    border:1px solid rgba(255,255,255,0.1);
+    box-shadow:0 4px 10px rgba(0,0,0,0.3);
+    transition:transform 0.3s;
+}
 
-        .disclaimer {
-            font-size: 9px;
-            color: #555;
-            margin-top: 15px;
-            line-height: 1.3;
-        }
-    </style>
+.proof-img:hover{
+    transform:scale(1.05);
+}
+
+.features{
+    background:rgba(255,255,255,0.03);
+    border-radius:15px;
+    padding:12px;
+    margin-bottom:15px;
+    border:1px solid rgba(255,255,255,0.05);
+}
+
+.feat{
+    display:flex;
+    align-items:center;
+    font-size:13px;
+    margin-bottom:6px;
+    font-weight:600;
+    text-align:left;
+}
+
+.feat i{
+    margin-right:10px;
+    font-style:normal;
+}
+
+@keyframes pulse{
+    0%{
+        box-shadow:0 0 0 0 rgba(0,200,83,0.6);
+        transform:scale(1);
+    }
+    70%{
+        box-shadow:0 0 0 12px rgba(0,200,83,0);
+        transform:scale(1.02);
+    }
+    100%{
+        box-shadow:0 0 0 0 rgba(0,200,83,0);
+        transform:scale(1);
+    }
+}
+
+.btn{
+    display:block;
+    background:var(--btn-green);
+    color:white;
+    text-decoration:none;
+    padding:14px;
+    border-radius:50px;
+    font-weight:800;
+    font-size:16px;
+    margin:8px 0;
+    animation:pulse 2s infinite;
+    text-transform:uppercase;
+}
+
+.btn-white{
+    background:#ffffff;
+    color:#000;
+    animation:none;
+    box-shadow:0 4px 12px rgba(255,255,255,0.15);
+}
+
+.support-link{
+    display:inline-flex;
+    align-items:center;
+    margin-top:10px;
+    color:var(--accent-blue);
+    text-decoration:none;
+    font-size:12px;
+    font-weight:700;
+    background:rgba(0,210,255,0.08);
+    padding:6px 14px;
+    border-radius:20px;
+    border:1px solid rgba(0,210,255,0.2);
+}
+
+.disclaimer{
+    font-size:9px;
+    color:#777;
+    margin-top:15px;
+    line-height:1.5;
+}
+
+</style>
 </head>
+
 <body>
 
-    <div class="main-container">
-        <img src="https://i.ibb.co/G34Zht3w/IMG-20260510-WA0022.jpg" alt="Jiga Bhai" class="profile-img">
-        <h1>Jiga bhai</h1>
-        <span class="subtitle">ગુજરાતી વેપારી</span>
+<div class="main-container">
 
-        <a href="https://t.me/+aQr9cGXc9PM4MzZl" class="btn" onclick="fbq('track', 'Lead');">Join Free Telegram</a>
+<img src="https://i.ibb.co/G34Zht3w/IMG-20260510-WA0022.jpg"
+alt="Jiga Bhai"
+class="profile-img">
 
-        <div class="proof-section">
-            <img src="https://i.ibb.co/mrhbkW9m/IMG-20260510-WA0023.jpg" class="proof-img" alt="Analysis 1">
-            <img src="https://i.ibb.co/Rp7vbtwL/IMG-20260510-WA0024.jpg" class="proof-img" alt="Analysis 2">
-        </div>
+<h1>Jiga bhai</h1>
 
-        <div class="features">
-            <div class="feat"><i>📊</i> NIFTY & BANKNIFTY Analysis</div>
-            <div class="feat"><i>⚡</i> Daily Levels & Chart Patterns</div>
-            <div class="feat"><i>🇮🇳</i> Pure Indian Market Trading</div>
-            <div class="feat"><i>🚫</i> No Forex | No Crypto</div>
-        </div>
+<span class="subtitle">ગુજરાતી વેપારી</span>
 
-        <a href="https://t.me/+aQr9cGXc9PM4MzZl" class="btn btn-white" onclick="fbq('track', 'Lead');">Get Free Access Now</a>
+<a href="https://t.me/+aQr9cGXc9PM4MzZl"
+class="btn"
+onclick="fbq('track', 'Lead');">
 
-        <a href="https://t.me/Jiga_Bhai_Gujrati_Trader_bot" class="support-link" onclick="fbq('track', 'Contact');">
-            💬 Contact Support Bot
-        </a>
+Explore Free Market Community
 
-        <div class="disclaimer">
-            *આ ચેનલ ફક્ત શૈક્ષણિક હેતુ માટે છે. અમે SEBI રજિસ્ટર્ડ નથી.<br>
-            (This channel is for educational purposes only.)
-        </div>
-    </div>
+</a>
+
+<div class="proof-section">
+
+<img src="https://i.ibb.co/mrhbkW9m/IMG-20260510-WA0023.jpg"
+class="proof-img"
+alt="Educational Analysis 1">
+
+<img src="https://i.ibb.co/Rp7vbtwL/IMG-20260510-WA0024.jpg"
+class="proof-img"
+alt="Educational Analysis 2">
+
+</div>
+
+<div class="features">
+
+<div class="feat">
+<i>📊</i>
+Nifty & Banknifty Learning
+</div>
+
+<div class="feat">
+<i>⚡</i>
+Educational Chart Discussions
+</div>
+
+<div class="feat">
+<i>🇮🇳</i>
+Indian Market Education
+</div>
+
+<div class="feat">
+<i>🧠</i>
+Price Action & Risk Awareness
+</div>
+
+<div class="feat">
+<i>🚫</i>
+No Forex | No Crypto
+</div>
+
+</div>
+
+<a href="https://t.me/+aQr9cGXc9PM4MzZl"
+class="btn btn-white"
+onclick="fbq('track', 'Lead');">
+
+View Daily Market Analysis
+
+</a>
+
+<a href="https://t.me/Jiga_Bhai_Gujrati_Trader_bot"
+class="support-link"
+onclick="fbq('track', 'Contact');">
+
+💬 Contact Support Bot
+
+</a>
+
+<div class="disclaimer">
+
+*આ કમ્યુનિટી માત્ર શૈક્ષણિક અને માર્કેટ લર્નિંગ હેતુ માટે છે.  
+અમે કોઈ નાણાકીય સલાહ આપતા નથી અને SEBI રજિસ્ટર્ડ નથી.<br><br>
+
+(This community is for educational and market learning purposes only.  
+We do not provide financial advice and are not SEBI registered.)
+
+</div>
+
+</div>
 
 </body>
 </html>
