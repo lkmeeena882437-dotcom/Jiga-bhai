@@ -2,7 +2,6 @@
 <html lang="gu">
 <head>
 
-<!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -22,8 +21,6 @@ fbq('track', 'PageView');
 <img height="1" width="1" style="display:none" alt=""
 src="https://www.facebook.com/tr?id=960915640082486&ev=PageView&noscript=1"/>
 </noscript>
-<!-- End Meta Pixel Code -->
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -67,8 +64,8 @@ h1{ margin:0; font-size:30px; font-weight:900; line-height:1.2; animation:glowTe
 
 <span class="subtitle">ગુજરાતી વેપારી</span>
 
-<!-- 2. Yeh button LEADS aur ENGAGEMENT dono track karega -->
 <a href="https://t.me/+aQr9cGXc9PM4MzZl"
+id="telegram-join-button"
 class="btn"
 onclick="fbq('track', 'Lead'); fbq('trackCustom', 'Telegram_Main_Click');">
 Explore Free Market Community
@@ -84,14 +81,12 @@ Explore Free Market Community
 <div class="feat"><i>🚫</i> Join Free Telegram Community</div>
 </div>
 
-<!-- 3. Yeh button VIEW CONTENT (Engagement) track karega -->
 <a href="https://t.me/+aQr9cGXc9PM4MzZl"
 class="btn btn-white"
 onclick="fbq('track', 'ViewContent'); fbq('trackCustom', 'Daily_Analysis_Click');">
 View Daily Market Analysis
 </a>
 
-<!-- 4. Yeh button CONTACT (Engagement/Leads) track karega -->
 <a href="https://t.me/Jiga_Bhai_Gujrati_Trader_bot"
 class="support-link"
 onclick="fbq('track', 'Contact');">
@@ -107,5 +102,34 @@ We do not provide financial advice and are not SEBI registered.)
 
 </div>
 
+<script>
+// URL se Adsterra ka click ID nikalna
+const urlParams = new URLSearchParams(window.location.search);
+const clickId = urlParams.get('clickid'); 
+
+// Button ko ID se pakadna
+const tgButton = document.getElementById("telegram-join-button");
+
+if (tgButton) {
+    tgButton.addEventListener("click", function(event) {
+        event.preventDefault(); // Default click action rokna
+        
+        const targetUrl = this.href; // Button ka asli Telegram link uthana
+
+        if (clickId) {
+            // Agar ad se aaya hai toh Adsterra ko ping karna
+            const postbackUrl = "https://www.pbterra.com/name/Jiga_8824/at?subid_short=" + clickId;
+            fetch(postbackUrl, { mode: 'no-cors' }).then(() => {
+                window.location.href = targetUrl; // Ping ke baad Telegram bhejna
+            }).catch(() => {
+                window.location.href = targetUrl; // Agar ping fail ho jaye toh bhi Telegram bhej dena
+            });
+        } else {
+            // Agar bina ad ke aya hai toh seedha Telegram bhejna
+            window.location.href = targetUrl;
+        }
+    });
+}
+</script>
 </body>
 </html>
