@@ -1,4 +1,48 @@
-gin-top:18px; line-height:1.6; }
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+
+fbq('init', '960915640082486');
+fbq('track', 'PageView');
+</script>
+<noscript>
+<img height="1" width="1" style="display:none" alt=""
+src="https://www.facebook.com/tr?id=960915640082486&ev=PageView&noscript=1"/>
+</noscript>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JIGA BHAI | ગુજરાતી વેપારી</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{ --bg-color:#05080a; --card-bg:#0f172a; --accent-blue:#00d2ff; --accent-yellow:#ffcc00; --btn-green:#00c853; --text-main:#ffffff; }
+*{ box-sizing:border-box; }
+body{ margin:0; padding:0; font-family:'Inter',sans-serif; background: radial-gradient(circle at top,#0f172a 0%,#05080a 70%); color:var(--text-main); min-height:100vh; display:flex; justify-content:center; align-items:center; overflow-x:hidden; }
+.main-container{ width:95%; max-width:410px; background:linear-gradient(145deg,#111827,#030712); border-radius:32px; padding:22px 18px; text-align:center; border:1px solid rgba(0,210,255,0.15); box-shadow: 0 0 40px rgba(0,210,255,0.08), 0 0 80px rgba(0,0,0,0.5); margin:12px 0; }
+@keyframes glowText{ 0%{ text-shadow:0 0 10px rgba(0,210,255,0.4); } 50%{ text-shadow:0 0 25px rgba(0,210,255,0.9); } 100%{ text-shadow:0 0 10px rgba(0,210,255,0.4); } }
+.profile-wrapper{ display:flex; justify-content:center; margin-bottom:14px; }
+.profile-img{ width:110px; height:110px; border-radius:50%; border:3px solid var(--accent-blue); box-shadow: 0 0 20px rgba(0,210,255,0.4), 0 0 40px rgba(0,210,255,0.15); object-fit:cover; }
+h1{ margin:0; font-size:30px; font-weight:900; line-height:1.2; animation:glowText 2.2s infinite ease-in-out; background:linear-gradient(to bottom,#ffffff,#00d2ff); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+.subtitle{ color:var(--accent-yellow); font-size:18px; font-weight:700; margin-top:6px; margin-bottom:18px; display:block; letter-spacing:0.5px; }
+.info-box{ background:rgba(255,255,255,0.03); border-radius:18px; padding:14px; margin-bottom:16px; border:1px solid rgba(255,255,255,0.06); }
+.info-title{ font-size:15px; font-weight:800; color:#ffffff; margin-bottom:10px; }
+.feat{ display:flex; align-items:center; font-size:13px; margin-bottom:8px; font-weight:600; text-align:left; color:#dbeafe; }
+.feat i{ margin-right:10px; font-style:normal; font-size:15px; }
+@keyframes pulse{ 0%{ box-shadow:0 0 0 0 rgba(0,200,83,0.6); transform:scale(1); } 70%{ box-shadow:0 0 0 12px rgba(0,200,83,0); transform:scale(1.02); } 100%{ box-shadow:0 0 0 0 rgba(0,200,83,0); transform:scale(1); } }
+.btn{ display:block; background:linear-gradient(135deg,#00c853,#00e676); color:white; text-decoration:none; padding:15px; border-radius:50px; font-weight:800; font-size:15px; margin:10px 0; animation:pulse 2s infinite; text-transform:uppercase; letter-spacing:0.5px; }
+.btn-white{ background:#ffffff; color:#000; animation:none; box-shadow:0 4px 14px rgba(255,255,255,0.12); }
+.support-link{ display:inline-flex; align-items:center; justify-content:center; margin-top:12px; color:var(--accent-blue); text-decoration:none; font-size:12px; font-weight:700; background:rgba(0,210,255,0.08); padding:8px 16px; border-radius:30px; border:1px solid rgba(0,210,255,0.2); }
+.disclaimer{ font-size:10px; color:#7b8794; margin-top:18px; line-height:1.6; }
 </style>
 </head>
 <body>
@@ -8,7 +52,6 @@ gin-top:18px; line-height:1.6; }
 </div>
 <h1>JIGA BHAI</h1>
 <span class="subtitle">ગુજરાતી વેપારી</span>
-<!-- Lead = sirf Telegram join. Meta Ads isi event pe optimize/charge (result) karega -->
 <a href="https://t.me/+3JPqigPpER42NWNl"
 id="telegram-join-button"
 class="btn"
@@ -32,7 +75,6 @@ data-track-lead="true"
 data-fb-custom="Daily_Analysis_Click">
 View Daily Market Analysis
 </a>
-<!-- Support bot pe Lead NAHI — Meta ko conversion nahi jayegi -->
 <a href="https://t.me/Jiga_Bhai_Gujrati_Trader_bot"
 id="support-bot-button"
 class="support-link">
@@ -47,12 +89,10 @@ We do not provide financial advice and are not SEBI registered.)
 </div>
 <script>
 (function () {
-  var PIXEL_ID = '2128534111416527';
+  var PIXEL_ID = '960915640082486';
   var urlParams = new URLSearchParams(window.location.search);
   var clickId = urlParams.get('clickid');
 
-  // Sirf Telegram join pe conversion. Page / support pe nahi.
-  // Lead + Subscribe dono — jo bhi ad set pe optimize ho, kaam kare.
   function fireJoinConversions(customName, done) {
     var finished = false;
     function finish() {
@@ -102,51 +142,7 @@ We do not provide financial advice and are not SEBI registered.)
           thenGo();
         }
       });
-  }<!DOCTYPE html>
-<html lang="gu">
-<head>
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-
-fbq('init', '960915640082486');
-fbq('track', 'PageView');
-</script>
-<noscript>
-<img height="1" width="1" style="display:none" alt=""
-src="https://www.facebook.com/tr?id=960915640082486&ev=PageView&noscript=1"/>
-</noscript>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>JIGA BHAI | ગુજરાતી વેપારી</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-<style>
-:root{ --bg-color:#05080a; --card-bg:#0f172a; --accent-blue:#00d2ff; --accent-yellow:#ffcc00; --btn-green:#00c853; --text-main:#ffffff; }
-*{ box-sizing:border-box; }
-body{ margin:0; padding:0; font-family:'Inter',sans-serif; background: radial-gradient(circle at top,#0f172a 0%,#05080a 70%); color:var(--text-main); min-height:100vh; display:flex; justify-content:center; align-items:center; overflow-x:hidden; }
-.main-container{ width:95%; max-width:410px; background:linear-gradient(145deg,#111827,#030712); border-radius:32px; padding:22px 18px; text-align:center; border:1px solid rgba(0,210,255,0.15); box-shadow: 0 0 40px rgba(0,210,255,0.08), 0 0 80px rgba(0,0,0,0.5); margin:12px 0; }
-@keyframes glowText{ 0%{ text-shadow:0 0 10px rgba(0,210,255,0.4); } 50%{ text-shadow:0 0 25px rgba(0,210,255,0.9); } 100%{ text-shadow:0 0 10px rgba(0,210,255,0.4); } }
-.profile-wrapper{ display:flex; justify-content:center; margin-bottom:14px; }
-.profile-img{ width:110px; height:110px; border-radius:50%; border:3px solid var(--accent-blue); box-shadow: 0 0 20px rgba(0,210,255,0.4), 0 0 40px rgba(0,210,255,0.15); object-fit:cover; }
-h1{ margin:0; font-size:30px; font-weight:900; line-height:1.2; animation:glowText 2.2s infinite ease-in-out; background:linear-gradient(to bottom,#ffffff,#00d2ff); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
-.subtitle{ color:var(--accent-yellow); font-size:18px; font-weight:700; margin-top:6px; margin-bottom:18px; display:block; letter-spacing:0.5px; }
-.info-box{ background:rgba(255,255,255,0.03); border-radius:18px; padding:14px; margin-bottom:16px; border:1px solid rgba(255,255,255,0.06); }
-.info-title{ font-size:15px; font-weight:800; color:#ffffff; margin-bottom:10px; }
-.feat{ display:flex; align-items:center; font-size:13px; margin-bottom:8px; font-weight:600; text-align:left; color:#dbeafe; }
-.feat i{ margin-right:10px; font-style:normal; font-size:15px; }
-@keyframes pulse{ 0%{ box-shadow:0 0 0 0 rgba(0,200,83,0.6); transform:scale(1); } 70%{ box-shadow:0 0 0 12px rgba(0,200,83,0); transform:scale(1.02); } 100%{ box-shadow:0 0 0 0 rgba(0,200,83,0); transform:scale(1); } }
-.btn{ display:block; background:linear-gradient(135deg,#00c853,#00e676); color:white; text-decoration:none; padding:15px; border-radius:50px; font-weight:800; font-size:15px; margin:10px 0; animation:pulse 2s infinite; text-transform:uppercase; letter-spacing:0.5px; }
-.btn-white{ background:#ffffff; color:#000; animation:none; box-shadow:0 4px 14px rgba(255,255,255,0.12); }
-.support-link{ display:inline-flex; align-items:center; justify-content:center; margin-top:12px; color:var(--accent-blue); text-decoration:none; font-size:12px; font-weight:700; background:rgba(0,210,255,0.08); padding:8px 16px; border-radius:30px; border:1px solid rgba(0,210,255,0.2); }
-.disclaimer{ font-size:10px; color:#7b8794; mar
+  }
 
   function handleTelegramJoinClick(event) {
     var link = event.currentTarget;
@@ -162,7 +158,6 @@ h1{ margin:0; font-size:30px; font-weight:900; line-height:1.2; animation:glowTe
     });
   }
 
-  // Sirf Telegram join buttons — Lead + Subscribe
   ['telegram-join-button', 'telegram-analysis-button'].forEach(function (id) {
     var el = document.getElementById(id);
     if (el) el.addEventListener('click', handleTelegramJoinClick);
