@@ -1,7 +1,110 @@
-<!DOCTYPE html>
+gin-top:18px; line-height:1.6; }
+</style>
+</head>
+<body>
+<div class="main-container">
+<div class="profile-wrapper">
+<img src="https://i.ibb.co/G34Zht3w/IMG-20260510-WA0022.jpg" alt="Jiga Bhai Profile Picture" class="profile-img">
+</div>
+<h1>JIGA BHAI</h1>
+<span class="subtitle">ગુજરાતી વેપારી</span>
+<!-- Lead = sirf Telegram join. Meta Ads isi event pe optimize/charge (result) karega -->
+<a href="https://t.me/+3JPqigPpER42NWNl"
+id="telegram-join-button"
+class="btn"
+data-track-lead="true"
+data-fb-custom="Telegram_Main_Click">
+Explore Free Market Community
+</a>
+<div class="info-box">
+<div class="info-title">📚 Educational Trading Community</div>
+<div class="feat"><i>📊</i> Nifty & Banknifty Learning</div>
+<div class="feat"><i>⚡</i> Educational Chart Discussions</div>
+<div class="feat"><i>🧠</i> Price Action & Risk Awareness</div>
+<div class="feat"><i>📈</i> Daily Market Observation</div>
+<div class="feat"><i>🇮🇳</i> Indian Market Education</div>
+<div class="feat"><i>🚫</i> Join Free Telegram Community</div>
+</div>
+<a href="https://t.me/+3JPqigPpER42NWNl"
+id="telegram-analysis-button"
+class="btn btn-white"
+data-track-lead="true"
+data-fb-custom="Daily_Analysis_Click">
+View Daily Market Analysis
+</a>
+<!-- Support bot pe Lead NAHI — Meta ko conversion nahi jayegi -->
+<a href="https://t.me/Jiga_Bhai_Gujrati_Trader_bot"
+id="support-bot-button"
+class="support-link">
+💬 Contact Support Bot
+</a>
+<div class="disclaimer">
+આ કમ્યુનિટી માત્ર શૈક્ષણિક અને માર્કેટ લર્નિંગ હેતુ માટે છે. <br>
+અમે કોઈ નાણાકીય સલાહ આપતા નથી અને SEBI રજિસ્ટર્ડ નથી.<br><br>
+(This community is for educational and market learning purposes only. <br>
+We do not provide financial advice and are not SEBI registered.)
+</div>
+</div>
+<script>
+(function () {
+  var PIXEL_ID = '2128534111416527';
+  var urlParams = new URLSearchParams(window.location.search);
+  var clickId = urlParams.get('clickid');
+
+  // Sirf Telegram join pe conversion. Page / support pe nahi.
+  // Lead + Subscribe dono — jo bhi ad set pe optimize ho, kaam kare.
+  function fireJoinConversions(customName, done) {
+    var finished = false;
+    function finish() {
+      if (finished) return;
+      finished = true;
+      done();
+    }
+
+    var events = ['Lead', 'Subscribe'];
+    events.forEach(function (ev) {
+      var img = new Image();
+      img.src = 'https://www.facebook.com/tr?id=' + PIXEL_ID +
+        '&ev=' + encodeURIComponent(ev) + '&noscript=1';
+    });
+
+    if (typeof fbq === 'function') {
+      fbq('track', 'Lead');
+      fbq('track', 'Subscribe');
+      if (customName) fbq('trackCustom', customName);
+    }
+
+    setTimeout(finish, 500);
+  }
+
+  function sendAdsterraPostback(thenGo) {
+    if (!clickId) {
+      thenGo();
+      return;
+    }
+    var postbackUrl = 'https://www.pbterra.com/name/Jiga_8824/at?subid_short=' + encodeURIComponent(clickId);
+    var timedOut = false;
+    var timer = setTimeout(function () {
+      timedOut = true;
+      thenGo();
+    }, 800);
+
+    fetch(postbackUrl, { mode: 'no-cors' })
+      .then(function () {
+        if (!timedOut) {
+          clearTimeout(timer);
+          thenGo();
+        }
+      })
+      .catch(function () {
+        if (!timedOut) {
+          clearTimeout(timer);
+          thenGo();
+        }
+      });
+  }<!DOCTYPE html>
 <html lang="gu">
 <head>
-
 <script>
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -12,24 +115,19 @@ t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
 
-/* 1. Yeh base code hai jo TRAFFIC aur PAGE ENGAGEMENT track karta hai */
 fbq('init', '960915640082486');
-fbq('track', 'PageView'); 
+fbq('track', 'PageView');
 </script>
-
 <noscript>
 <img height="1" width="1" style="display:none" alt=""
 src="https://www.facebook.com/tr?id=960915640082486&ev=PageView&noscript=1"/>
 </noscript>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>JIGA BHAI | ગુજરાતી વેપારી</title>
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-
 <style>
 :root{ --bg-color:#05080a; --card-bg:#0f172a; --accent-blue:#00d2ff; --accent-yellow:#ffcc00; --btn-green:#00c853; --text-main:#ffffff; }
 *{ box-sizing:border-box; }
@@ -48,88 +146,28 @@ h1{ margin:0; font-size:30px; font-weight:900; line-height:1.2; animation:glowTe
 .btn{ display:block; background:linear-gradient(135deg,#00c853,#00e676); color:white; text-decoration:none; padding:15px; border-radius:50px; font-weight:800; font-size:15px; margin:10px 0; animation:pulse 2s infinite; text-transform:uppercase; letter-spacing:0.5px; }
 .btn-white{ background:#ffffff; color:#000; animation:none; box-shadow:0 4px 14px rgba(255,255,255,0.12); }
 .support-link{ display:inline-flex; align-items:center; justify-content:center; margin-top:12px; color:var(--accent-blue); text-decoration:none; font-size:12px; font-weight:700; background:rgba(0,210,255,0.08); padding:8px 16px; border-radius:30px; border:1px solid rgba(0,210,255,0.2); }
-.disclaimer{ font-size:10px; color:#7b8794; margin-top:18px; line-height:1.6; }
-</style>
-</head>
+.disclaimer{ font-size:10px; color:#7b8794; mar
 
-<body>
+  function handleTelegramJoinClick(event) {
+    var link = event.currentTarget;
+    var targetUrl = link.href;
+    var customName = link.getAttribute('data-fb-custom');
 
-<div class="main-container">
+    event.preventDefault();
 
-<div class="profile-wrapper">
-<img src="https://i.ibb.co/G34Zht3w/IMG-20260510-WA0022.jpg" alt="Jiga Bhai Profile Picture" class="profile-img">
-</div>
-
-<h1>JIGA BHAI</h1>
-
-<span class="subtitle">ગુજરાતી વેપારી</span>
-
-<a href="https://t.me/+3JPqigPpER42NWNl"
-id="telegram-join-button"
-class="btn"
-onclick="fbq('track', 'Lead'); fbq('trackCustom', 'Telegram_Main_Click');">
-Explore Free Market Community
-</a>
-
-<div class="info-box">
-<div class="info-title">📚 Educational Trading Community</div>
-<div class="feat"><i>📊</i> Nifty & Banknifty Learning</div>
-<div class="feat"><i>⚡</i> Educational Chart Discussions</div>
-<div class="feat"><i>🧠</i> Price Action & Risk Awareness</div>
-<div class="feat"><i>📈</i> Daily Market Observation</div>
-<div class="feat"><i>🇮🇳</i> Indian Market Education</div>
-<div class="feat"><i>🚫</i> Join Free Telegram Community</div>
-</div>
-
-<a href="https://t.me/+3JPqigPpER42NWNl"
-class="btn btn-white"
-onclick="fbq('track', 'ViewContent'); fbq('trackCustom', 'Daily_Analysis_Click');">
-View Daily Market Analysis
-</a>
-
-<a href="https://t.me/Jiga_Bhai_Gujrati_Trader_bot"
-class="support-link"
-onclick="fbq('track', 'Contact');">
-💬 Contact Support Bot
-</a>
-
-<div class="disclaimer">
-આ કમ્યુનિટી માત્ર શૈક્ષણિક અને માર્કેટ લર્નિંગ હેતુ માટે છે. <br> 
-અમે કોઈ નાણાકીય સલાહ આપતા નથી અને SEBI રજિસ્ટર્ડ નથી.<br><br>
-(This community is for educational and market learning purposes only. <br> 
-We do not provide financial advice and are not SEBI registered.)
-</div>
-
-</div>
-
-<script>
-// URL se Adsterra ka click ID nikalna
-const urlParams = new URLSearchParams(window.location.search);
-const clickId = urlParams.get('clickid'); 
-
-// Button ko ID se pakadna
-const tgButton = document.getElementById("telegram-join-button");
-
-if (tgButton) {
-    tgButton.addEventListener("click", function(event) {
-        event.preventDefault(); // Default click action rokna
-        
-        const targetUrl = this.href; // Button ka asli Telegram link uthana
-
-        if (clickId) {
-            // Agar ad se aaya hai toh Adsterra ko ping karna
-            const postbackUrl = "https://www.pbterra.com/name/Jiga_8824/at?subid_short=" + clickId;
-            fetch(postbackUrl, { mode: 'no-cors' }).then(() => {
-                window.location.href = targetUrl; // Ping ke baad Telegram bhejna
-            }).catch(() => {
-                window.location.href = targetUrl; // Agar ping fail ho jaye toh bhi Telegram bhej dena
-            });
-        } else {
-            // Agar bina ad ke aya hai toh seedha Telegram bhejna
-            window.location.href = targetUrl;
-        }
+    fireJoinConversions(customName, function () {
+      sendAdsterraPostback(function () {
+        window.location.href = targetUrl;
+      });
     });
-}
+  }
+
+  // Sirf Telegram join buttons — Lead + Subscribe
+  ['telegram-join-button', 'telegram-analysis-button'].forEach(function (id) {
+    var el = document.getElementById(id);
+    if (el) el.addEventListener('click', handleTelegramJoinClick);
+  });
+})();
 </script>
 </body>
 </html>
