@@ -16,11 +16,12 @@ fbq('track', 'PageView');
 </script>
 <noscript>
 <img height="1" width="1" style="display:none" alt=""
-src="https://www.facebook.com/tr?id=960915640082486&ev=PageView&noscript=1"/>
+src="https://www.facebook.com/tr?id=2128534111416527&ev=PageView&noscript=1"/>
 </noscript>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>JIGA BHAI | ગુજરાતી વેપારી</title>
+<link rel="preload" href="https://i.ibb.co/G34Zht3w/IMG-20260510-WA0022.jpg" as="image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
@@ -52,12 +53,14 @@ h1{ margin:0; font-size:30px; font-weight:900; line-height:1.2; animation:glowTe
 </div>
 <h1>JIGA BHAI</h1>
 <span class="subtitle">ગુજરાતી વેપારી</span>
+<div style="background: rgba(0,210,255,0.08); border-radius: 20px; padding: 6px 14px; margin-bottom: 20px; display: inline-block; border: 1px solid rgba(0,210,255,0.15); box-shadow: 0 0 10px rgba(0,210,255,0.05);">
+<span style="font-size: 13px; font-weight: 700; color: #00d2ff; letter-spacing: 0.3px;">🔥 45,000+ થી વધુ ગુજરાતી ટ્રેડર્સ જોડાઈ ચુક્યા છે</span>
+</div>
 <a href="https://t.me/+3JPqigPpER42NWNl"
 id="telegram-join-button"
 class="btn"
-data-track-lead="true"
 data-fb-custom="Telegram_Main_Click">
-Explore Free Market Community
+ટેલિગ્રામમાં ફ્રી જોડાઓ
 </a>
 <div class="info-box">
 <div class="info-title">📚 Educational Trading Community</div>
@@ -68,18 +71,24 @@ Explore Free Market Community
 <div class="feat"><i>🇮🇳</i> Indian Market Education</div>
 <div class="feat"><i>🚫</i> Join Free Telegram Community</div>
 </div>
-<a href="https://t.me/+3JPqigPpER42NWNl"
-id="telegram-analysis-button"
-class="btn btn-white"
-data-track-lead="true"
-data-fb-custom="Daily_Analysis_Click">
-View Daily Market Analysis
-</a>
 <a href="https://t.me/Jiga_Bhai_Gujrati_Trader_bot"
 id="support-bot-button"
 class="support-link">
 💬 Contact Support Bot
 </a>
+
+<div style="background: rgba(255,255,255,0.03); border-radius: 18px; padding: 16px; margin-top: 20px; border: 1px solid rgba(255,255,255,0.06); text-align: left;">
+<div style="font-size: 15px; font-weight: 800; color: #ffffff; margin-bottom: 12px; text-align: center;">વારંવાર પૂછાતા પ્રશ્નો (FAQ)</div>
+<div style="margin-bottom: 10px;">
+  <div style="font-size: 13px; font-weight: 700; color: var(--accent-yellow); margin-bottom: 4px;">પ્ર: શું આ ચેનલ ફ્રી છે?</div>
+  <div style="font-size: 12px; color: #dbeafe; line-height: 1.4;">જ: હા, આ સંપૂર્ણપણે ફ્રી શૈક્ષણિક (Educational) ચેનલ છે. જોડાવવા માટે કોઈ ચાર્જ નથી.</div>
+</div>
+<div>
+  <div style="font-size: 13px; font-weight: 700; color: var(--accent-yellow); margin-bottom: 4px;">પ્ર: આ ચેનલમાં શું શીખવા મળશે?</div>
+  <div style="font-size: 12px; color: #dbeafe; line-height: 1.4;">જ: ડેઇલી નિફ્ટી અને બેન્કનિફ્ટી ચાર્ટ એનાલિસિસ, પ્રાઇસ એક્શન અને માર્કેટ લેવલની માહિતી.</div>
+</div>
+</div>
+
 <div class="disclaimer">
 આ કમ્યુનિટી માત્ર શૈક્ષણિક અને માર્કેટ લર્નિંગ હેતુ માટે છે. <br>
 અમે કોઈ નાણાકીય સલાહ આપતા નથી અને SEBI રજિસ્ટર્ડ નથી.<br><br>
@@ -89,7 +98,7 @@ We do not provide financial advice and are not SEBI registered.)
 </div>
 <script>
 (function () {
-  var PIXEL_ID = '960915640082486';
+  var PIXEL_ID = '2128534111416527';
   var urlParams = new URLSearchParams(window.location.search);
   var clickId = urlParams.get('clickid');
 
@@ -101,17 +110,15 @@ We do not provide financial advice and are not SEBI registered.)
       done();
     }
 
-    var events = ['Lead', 'Subscribe'];
-    events.forEach(function (ev) {
-      var img = new Image();
-      img.src = 'https://www.facebook.com/tr?id=' + PIXEL_ID +
-        '&ev=' + encodeURIComponent(ev) + '&noscript=1';
-    });
-
-    if (typeof fbq === 'function') {
-      fbq('track', 'Lead');
-      fbq('track', 'Subscribe');
-      if (customName) fbq('trackCustom', customName);
+    if (!sessionStorage.getItem('telegram_subscribed')) {
+      if (typeof fbq === 'function') {
+        fbq('track', 'Subscribe');
+        if (customName) fbq('trackCustom', customName);
+      } else {
+        var img = new Image();
+        img.src = 'https://www.facebook.com/tr?id=' + PIXEL_ID + '&ev=Subscribe&noscript=1';
+      }
+      sessionStorage.setItem('telegram_subscribed', 'true');
     }
 
     setTimeout(finish, 500);
@@ -153,12 +160,19 @@ We do not provide financial advice and are not SEBI registered.)
 
     fireJoinConversions(customName, function () {
       sendAdsterraPostback(function () {
-        window.location.href = targetUrl;
+        // Deep link to force open Telegram App and bypass FB in-app browser
+        var tgAppUrl = 'tg://join?invite=3JPqigPpER42NWNl';
+        window.location.href = tgAppUrl;
+        
+        // Fallback to regular web URL if the app doesn't open
+        setTimeout(function() {
+          window.location.href = targetUrl;
+        }, 1000);
       });
     });
   }
 
-  ['telegram-join-button', 'telegram-analysis-button'].forEach(function (id) {
+  ['telegram-join-button'].forEach(function (id) {
     var el = document.getElementById(id);
     if (el) el.addEventListener('click', handleTelegramJoinClick);
   });
