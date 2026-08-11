@@ -86,18 +86,6 @@ class="support-link">
 💬 Contact Support Bot
 </a>
 
-<div style="background: rgba(255,255,255,0.03); border-radius: 16px; padding: 10px; margin-top: 10px; border: 1px solid rgba(255,255,255,0.06); text-align: left;">
-<div style="font-size: 13px; font-weight: 800; color: #ffffff; margin-bottom: 8px; text-align: center;">વારંવાર પૂછાતા પ્રશ્નો (FAQ)</div>
-<div style="margin-bottom: 6px;">
-  <div style="font-size: 11px; font-weight: 700; color: var(--accent-yellow); margin-bottom: 2px;">પ્ર: શું આ ચેનલ ફ્રી છે?</div>
-  <div style="font-size: 10px; color: #dbeafe; line-height: 1.3;">જ: હા, આ સંપૂર્ણપણે ફ્રી શૈક્ષણિક (Educational) ચેનલ છે. જોડાવવા માટે કોઈ ચાર્જ નથી.</div>
-</div>
-<div>
-  <div style="font-size: 11px; font-weight: 700; color: var(--accent-yellow); margin-bottom: 2px;">પ્ર: આ ચેનલમાં શું શીખવા મળશે?</div>
-  <div style="font-size: 10px; color: #dbeafe; line-height: 1.3;">જ: ડેઇલી નિફ્ટી અને બેન્કનિફ્ટી ચાર્ટ એનાલિસિસ, પ્રાઇસ એક્શન અને માર્કેટ લેવલની માહિતી.</div>
-</div>
-</div>
-
 <div class="disclaimer">
 આ કમ્યુનિટી માત્ર શૈક્ષણિક અને માર્કેટ લર્નિંગ હેતુ માટે છે. અમે કોઈ નાણાકીય સલાહ આપતા નથી અને SEBI રજિસ્ટર્ડ નથી.<br>
 (This community is for educational and market learning purposes only. We do not provide financial advice and are not SEBI registered.)
@@ -109,14 +97,8 @@ class="support-link">
   var urlParams = new URLSearchParams(window.location.search);
   var clickId = urlParams.get('clickid');
 
-  function fireJoinConversions(customName, done) {
-    var finished = false;
-    function finish() {
-      if (finished) return;
-      finished = true;
-      done();
-    }
-
+  function fireJoinConversions(customName) {
+    // 1. FB Pixel Track (Only once per session)
     if (!sessionStorage.getItem('telegram_subscribed')) {
       if (typeof fbq === 'function') {
         fbq('track', 'Subscribe');
@@ -127,35 +109,14 @@ class="support-link">
       }
       sessionStorage.setItem('telegram_subscribed', 'true');
     }
-
-    setTimeout(finish, 500);
   }
 
-  function sendAdsterraPostback(thenGo) {
-    if (!clickId) {
-      thenGo();
-      return;
+  function sendAdsterraPostbackBackground() {
+    // Adsterra ping running silently in the background
+    if (clickId) {
+      var postbackUrl = 'https://www.pbterra.com/name/Jiga_8824/at?subid_short=' + encodeURIComponent(clickId);
+      fetch(postbackUrl, { mode: 'no-cors' }).catch(function(){}); 
     }
-    var postbackUrl = 'https://www.pbterra.com/name/Jiga_8824/at?subid_short=' + encodeURIComponent(clickId);
-    var timedOut = false;
-    var timer = setTimeout(function () {
-      timedOut = true;
-      thenGo();
-    }, 800);
-
-    fetch(postbackUrl, { mode: 'no-cors' })
-      .then(function () {
-        if (!timedOut) {
-          clearTimeout(timer);
-          thenGo();
-        }
-      })
-      .catch(function () {
-        if (!timedOut) {
-          clearTimeout(timer);
-          thenGo();
-        }
-      });
   }
 
   function handleTelegramJoinClick(event) {
@@ -163,26 +124,28 @@ class="support-link">
     var targetUrl = link.href;
     var customName = link.getAttribute('data-fb-custom');
 
-    event.preventDefault();
+    // Default link behavior roko taaki delay na ho
+    event.preventDefault(); 
 
-    fireJoinConversions(customName, function () {
-      sendAdsterraPostback(function () {
-        // Deep link to force open Telegram App and bypass FB in-app browser
-        var tgAppUrl = 'tg://join?invite=3JPqigPpER42NWNl';
-        window.location.href = tgAppUrl;
-        
-        // Fallback to regular web URL if the app doesn't open
-        setTimeout(function() {
-          window.location.href = targetUrl;
-        }, 1000);
-      });
-    });
+    // Tracker aur background ping ko trigger karo
+    fireJoinConversions(customName);
+    sendAdsterraPostbackBackground();
+
+    // 0ms delay ke sath seedha App kholne ki try karo
+    var tgAppUrl = 'tg://join?invite=3JPqigPpER42NWNl';
+    window.location.href = tgAppUrl;
+    
+    // Agar mobile me App nahi mila ya Desktop hai, to 500ms baad regular web link fallback khol do
+    setTimeout(function() {
+      window.location.href = targetUrl;
+    }, 500);
   }
 
-  ['telegram-join-button'].forEach(function (id) {
-    var el = document.getElementById(id);
-    if (el) el.addEventListener('click', handleTelegramJoinClick);
-  });
+  // Button ke click pe action assign karna
+  var joinBtn = document.getElementById('telegram-join-button');
+  if (joinBtn) {
+    joinBtn.addEventListener('click', handleTelegramJoinClick);
+  }
 })();
 </script>
 </body>
