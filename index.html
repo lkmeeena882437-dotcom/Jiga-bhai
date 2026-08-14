@@ -1,382 +1,264 @@
 <!DOCTYPE html>
 <html lang="gu">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-<meta name="theme-color" content="#05080a">
-
-<title>JIGA BHAI | Gujarat's #1 Trading Community</title>
-<meta name="description" content="Join 45,000+ Gujarati traders. Free Nifty & Banknifty education.">
-
-<meta property="og:type" content="website">
-<meta property="og:title" content="JIGA BHAI | 45K+ Gujarati Traders">
-<meta property="og:image" content="https://i.ibb.co/G34Zht3w/IMG-20260510-WA0022.jpg">
-
-<!-- Facebook Pixel -->
 <script>
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
 n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f.fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
 n.queue=[];t=b.createElement(e);t.async=!0;
 t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
-fbq('track', 'PageView', {}, {eventID: 'pv_' + Date.now()});
+
+fbq('init', '2128534111416527');
+fbq('track', 'PageView');
 </script>
 <noscript>
-<img height="1" width="1" style="display:none"
+<img height="1" width="1" style="display:none" alt=""
 src="https://www.facebook.com/tr?id=2128534111416527&ev=PageView&noscript=1"/>
 </noscript>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>JIGA BHAI | ગુજરાતી વેપારી</title>
+
+<!-- Preload Images -->
+<link rel="preload" href="https://i.ibb.co/G34Zht3w/IMG-20260510-WA0022.jpg" as="image">
+<link rel="preload" href="https://i.ibb.co/bgz5Ds6W/e90d909d-3872-4115-9437-4bee9f6cf473.png" as="image">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@700;800;900&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
-* { box-sizing:border-box; margin:0; padding:0; }
-
-html, body { 
-    height: 100%; 
-    overflow: hidden; 
-    font-family: 'Inter', sans-serif;
+:root { 
+    --bg-dark: #0a0f18; 
+    --card-bg: rgba(18, 26, 40, 0.85); /* Solid & darker core to prevent eye strain */
+    --accent-blue: #00d2ff; 
+    --accent-yellow: #ffcc00; 
+    --text-main: #ffffff; 
 }
+* { box-sizing:border-box; margin:0; padding:0; -webkit-font-smoothing: antialiased; }
 
-body {
-    background: url('https://i.ibb.co/bgz5Ds6W/e90d909d-3872-4115-9437-4bee9f6cf473.png') center/cover no-repeat fixed;
-    display: flex; justify-content: center; align-items: center;
-}
-
-body::before { 
-    content: ''; position: absolute; inset: 0; 
-    background: linear-gradient(180deg, rgba(3,7,18,0.75) 0%, rgba(3,7,18,0.95) 100%); 
-    z-index: 0; 
-}
-
-.container {
-    position: relative; z-index: 1;
-    width: 95%; max-width: 380px;
-    background: rgba(15, 23, 42, 0.95);
-    border-radius: 30px;
-    padding: 30px 20px;
-    text-align: center;
-    border: 1px solid rgba(255,255,255,0.1);
-    box-shadow: 0 25px 60px rgba(0,0,0,0.8);
-    backdrop-filter: blur(20px);
-}
-
-.profile {
-    width: 120px; height: 120px;
-    margin: 0 auto 15px;
-    position: relative;
-}
-
-.profile img {
-    width: 100%; height: 100%;
-    border-radius: 50%;
-    border: 4px solid #fff;
-    object-fit: cover;
-    box-shadow: 0 0 40px rgba(0, 210, 255, 0.8), 0 0 80px rgba(0, 210, 255, 0.4);
-}
-
-.live {
-    position: absolute; bottom: -5px; left: 50%; transform: translateX(-50%);
-    background: linear-gradient(135deg, #ff0055, #e91e63);
-    color: #fff; font-size: 10px; font-weight: 900;
-    padding: 4px 12px; border-radius: 20px;
-    display: flex; align-items: center; gap: 5px;
-    border: 2px solid rgba(255,255,255,0.5);
-    animation: livePulse 2s infinite;
-}
-
-.live-dot {
-    width: 6px; height: 6px; background: #fff; border-radius: 50%;
-    animation: blink 1s infinite;
-}
-
-@keyframes livePulse {
-    0%, 100% { transform: translateX(-50%) scale(1); }
-    50% { transform: translateX(-50%) scale(1.05); }
-}
-
-@keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.3; }
-}
-
-h1 {
-    font-size: 26px; font-weight: 900;
-    background: linear-gradient(135deg, #fff 20%, #00d2ff);
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    margin-bottom: 5px;
-    animation: textGlow 2.5s infinite;
-}
-
-@keyframes textGlow {
-    0%, 100% { filter: drop-shadow(0 0 10px rgba(0,210,255,0.5)); }
-    50% { filter: drop-shadow(0 0 20px rgba(0,210,255,1)); }
-}
-
-.subtitle {
-    color: #ffcc00; font-size: 14px; font-weight: 800;
-    margin-bottom: 15px;
-}
-
-.trust {
-    background: rgba(0, 210, 255, 0.1);
-    border: 1px solid rgba(0, 210, 255, 0.3);
-    border-radius: 20px; padding: 10px 15px;
-    margin-bottom: 20px;
-}
-
-.trust span {
-    color: #00d2ff; font-size: 13px; font-weight: 700;
-}
-
-.join-btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 12px;
-    width: 100%;
-    padding: 20px;
-    background: linear-gradient(135deg, #0088cc, #00b4d8, #0096c7);
-    color: #fff;
-    font-size: 16px;
-    font-weight: 900;
-    text-transform: uppercase;
-    text-decoration: none;
-    border-radius: 60px;
-    border: none;
-    cursor: pointer;
-    box-shadow: 
-        0 10px 40px rgba(0, 136, 204, 0.6),
-        inset 0 2px 0 rgba(255,255,255,0.3);
-    animation: btnBounce 2s infinite;
-    margin-bottom: 15px;
-    transition: transform 0.2s;
-}
-
-@keyframes btnBounce {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.03); }
-}
-
-.join-btn:active {
-    transform: scale(0.97);
-}
-
-.join-btn svg {
-    width: 28px; height: 28px;
-}
-
-.join-btn .free {
-    background: #00ff88;
-    color: #000;
-    font-size: 10px;
-    padding: 4px 10px;
-    border-radius: 15px;
-    font-weight: 900;
-}
-
-.countdown-box {
-    background: rgba(0,0,0,0.4);
-    border: 1px solid rgba(0, 210, 255, 0.2);
-    border-radius: 20px;
-    padding: 15px;
-    margin-bottom: 15px;
-}
-
-.countdown-title {
-    color: #00d2ff;
-    font-size: 14px;
-    font-weight: 700;
-    margin-bottom: 12px;
-}
-
-.countdown-display {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 10px;
-}
-
-.count-num {
-    font-size: 36px;
-    font-weight: 900;
-    color: #00d2ff;
-    text-shadow: 0 0 20px rgba(0,210,255,0.8);
-}
-
-.count-label {
-    font-size: 14px;
-    color: #718096;
-}
-
-.progress-bar {
-    width: 100%;
-    height: 6px;
-    background: rgba(0,210,255,0.15);
-    border-radius: 3px;
-    overflow: hidden;
-}
-
-.progress-fill {
+html, body {
     height: 100%;
-    background: linear-gradient(90deg, #00d2ff, #00ff88);
-    border-radius: 3px;
-    transition: width 1s linear;
+    overflow: hidden; 
 }
 
-.info {
-    background: rgba(0,0,0,0.3);
-    border-radius: 15px;
-    padding: 15px;
-    margin-bottom: 15px;
-    text-align: left;
+/* Background Image setup */
+body { 
+    font-family:'Inter',sans-serif; 
+    background: url('https://i.ibb.co/bgz5Ds6W/e90d909d-3872-4115-9437-4bee9f6cf473.png') center top / cover no-repeat fixed, var(--bg-dark); 
+    color: var(--text-main); 
+    display: flex; justify-content: center; align-items: center; 
+    position: relative; 
 }
 
-.info-title {
-    font-size: 12px;
-    font-weight: 800;
-    text-transform: uppercase;
-    margin-bottom: 10px;
-    color: #fff;
+/* Background Overlay - Darker to create contrast and save eyes */
+body::before { 
+    content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; 
+    background: rgba(4, 7, 12, 0.82); 
+    z-index: -1; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); 
 }
 
-.info-item {
-    display: flex;
-    align-items: center;
-    font-size: 12px;
-    color: #e2e8f0;
-    margin-bottom: 8px;
+/* Main Container - More solid, less transparent */
+.main-container { 
+    width: 95%; max-width: 400px; 
+    max-height: 95vh; 
+    background: var(--card-bg); 
+    border-radius: 30px; padding: 22px 18px; text-align: center; 
+    
+    border: 1px solid rgba(255,255,255,0.08);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.9); 
+        
+    margin: auto; z-index: 1; position: relative;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    animation: fadeUp 0.6s ease-out forwards;
 }
 
-.info-item .icon {
-    margin-right: 10px;
-    font-size: 14px;
+@keyframes fadeUp { 0%{ opacity: 0; transform: translateY(20px); } 100%{ opacity: 1; transform: translateY(0); } }
+
+/* Profile Avatar */
+.profile-wrapper { display: flex; justify-content: center; margin-bottom: 12px; }
+.profile-img-container {
+    position: relative;
+    display: inline-block;
+    padding: 3px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #00d2ff, #ff0055, #ffcc00, #3a7bd5);
+    background-size: 300% 300%;
+    animation: gradientSpin 4s ease infinite;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+}
+@keyframes gradientSpin { 
+    0% { background-position: 0% 50%; } 
+    50% { background-position: 100% 50%; } 
+    100% { background-position: 0% 50%; } 
+}
+.profile-img { 
+    width: 90px; height: 90px; border-radius: 50%; 
+    border: 3px solid #030712; 
+    object-fit: cover; 
+    display: block;
 }
 
-.disclaimer {
-    font-size: 9px;
-    color: #718096;
-    opacity: 0.8;
-    line-height: 1.5;
+/* Titles */
+h1 { 
+    margin: 0; font-size: 26px; font-weight: 900; line-height: 1.2; 
+    color: #ffffff; letter-spacing: -0.5px;
 }
+.subtitle { 
+    color: var(--accent-yellow); font-size: 14px; font-weight: 800; 
+    margin-top: 4px; margin-bottom: 16px; display: block; 
+}
+
+/* Clean CTA Info Box replacing generic features */
+.info-box { 
+    width: 100%; background: rgba(0,0,0,0.5); border-radius: 20px; padding: 16px; margin-bottom: 16px; 
+    border: 1px solid rgba(255,255,255,0.05);
+}
+.info-title { font-size: 14px; font-weight: 800; color: #00d2ff; margin-bottom: 12px; text-transform: uppercase;}
+.feat { display: flex; align-items: center; justify-content: center; font-size: 14px; margin-bottom: 10px; font-weight: 700; color: #ffffff; }
+.feat span { margin: 0 6px; color: rgba(255,255,255,0.4); font-size: 10px;}
+
+/* 3D Telegram Button */
+.btn { 
+    display: flex; justify-content: center; align-items: center; width: 100%;
+    background: linear-gradient(145deg, #0088cc, #2AABEE); color: white; text-decoration: none; 
+    padding: 16px 10px; border-radius: 50px; font-weight: 800; font-size: 16px; margin: 8px 0; 
+    text-transform: uppercase; 
+    box-shadow: 0 8px 20px rgba(0, 136, 204, 0.5);
+    border: 1px solid rgba(255,255,255,0.1);
+    transition: transform 0.1s ease;
+}
+.btn:active { transform: scale(0.96); box-shadow: 0 4px 10px rgba(0, 136, 204, 0.5); }
+.btn svg { margin-right: 10px; width: 22px; height: 22px; flex-shrink: 0; }
+
+/* Support & Disclaimer */
+.support-link { 
+    display: inline-flex; align-items: center; justify-content: center; margin-top: 10px; 
+    color: #94a3b8; text-decoration: none; font-size: 11px; font-weight: 600; 
+}
+.disclaimer { 
+    font-size: 9px; color: #64748b; margin-top: 18px; line-height: 1.4; opacity: 0.8;
+    background: rgba(0,0,0,0.4); padding: 8px 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05);
+}
+
+/* Minimized Corner Trust/Live Badge */
+.corner-badge { 
+    position: absolute; bottom: 20px; right: 20px; 
+    background: rgba(0,0,0,0.8); border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px; padding: 6px 12px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.8); z-index: 10;
+    backdrop-filter: blur(10px);
+}
+.corner-live { 
+    color: #ff0055; font-size: 10px; font-weight: 900; display: flex; align-items: center; gap: 4px; margin-bottom: 2px;
+}
+.corner-live .dot { width: 5px; height: 5px; background: #ff0055; border-radius: 50%; animation: blink 1s infinite; }
+.corner-users { font-size: 9px; font-weight: 700; color: #94a3b8; }
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.2; } }
+
 </style>
 </head>
 <body>
 
-<div class="container">
-    
-    <div class="profile">
-        <img src="https://i.ibb.co/G34Zht3w/IMG-20260510-WA0022.jpg" alt="Jiga Bhai">
-        <div class="live">
-            <span class="live-dot"></span>
-            LIVE
-        </div>
-    </div>
-    
-    <h1>JIGA BHAI</h1>
-    <div class="subtitle">ગુજરાતી વેપારી</div>
-    
-    <div class="trust">
-        <span>🔥 45,000+ ગુજરાતી ટ્રેડર્સ જોડાઈ ચુક્યા</span>
-    </div>
-    
-    <a href="https://t.me/+3JPqigPpER42NWNl" class="join-btn" id="joinBtn">
-        <svg viewBox="0 0 24 24" fill="#fff">
-            <path d="M20.665 3.717l-17.73 6.837c-1.21.486-1.203 1.161-.222 1.462l4.552 1.42 10.532-6.645c.498-.303.953-.14.579.192l-8.533 7.701h-.002l.002.002-.314 4.692c.46 0 .663-.211.921-.46l2.211-2.15 4.599 3.397c.848.467 1.457.227 1.668-.785l3.019-14.228c.309-1.239-.473-1.8-1.282-1.435z"/>
-        </svg>
-        <span>Join Free Telegram</span>
-        <span class="free">FREE</span>
-    </a>
-    
-    <div class="countdown-box">
-        <div class="countdown-title">⏱️ Auto Redirect in</div>
-        <div class="countdown-display">
-            <span class="count-num" id="countdown">5</span>
-            <span class="count-label">seconds</span>
-        </div>
-        <div class="progress-bar">
-            <div class="progress-fill" id="progress"></div>
-        </div>
-    </div>
-    
-    <div class="info">
-        <div class="info-title">📚 Educational Trading Community</div>
-        <div class="info-item"><span class="icon">📊</span> Nifty & Banknifty Learning</div>
-        <div class="info-item"><span class="icon">⚡</span> Chart Discussions</div>
-        <div class="info-item"><span class="icon">🧠</span> Price Action & Risk</div>
-        <div class="info-item"><span class="icon">✅</span> 100% FREE</div>
-    </div>
-    
-    <div class="disclaimer">
-        આ કમ્યુનિટી માત્ર શૈક્ષણિક હેતુ માટે છે. SEBI રજિસ્ટર્ડ નથી.
-    </div>
+<!-- Minimized Corner Box for Live & Trust -->
+<div class="corner-badge">
+    <div class="corner-live"><div class="dot"></div>LIVE NOW</div>
+    <div class="corner-users">45,000+ Joined</div>
 </div>
 
+<div class="main-container">
+
+<div class="profile-wrapper">
+<div class="profile-img-container">
+<img src="https://i.ibb.co/G34Zht3w/IMG-20260510-WA0022.jpg" alt="Jiga Bhai Profile Picture" class="profile-img">
+</div>
+</div>
+
+<h1>JIGA BHAI</h1>
+<span class="subtitle">ગુજરાતી વેપારી</span>
+
+<!-- Clean & High Intent Trading Info Box -->
+<div class="info-box">
+<div class="info-title">Free Nifty & BankNifty Setup</div>
+<div class="feat">Daily Live Market Trade <span>●</span> Option Buying</div>
+<div class="feat">Educational Chart Analysis</div>
+</div>
+
+<a href="https://t.me/+3JPqigPpER42NWNl"
+id="telegram-join-button"
+class="btn"
+data-fb-custom="Telegram_Main_Click">
+<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20.665 3.717l-17.73 6.837c-1.21.486-1.203 1.161-.222 1.462l4.552 1.42 10.532-6.645c.498-.303.953-.14.579.192l-8.533 7.701h-.002l.002.002-.314 4.692c.46 0 .663-.211.921-.46l2.211-2.15 4.599 3.397c.848.467 1.457.227 1.668-.785l3.019-14.228c.309-1.239-.473-1.8-1.282-1.435z" fill="#ffffff"/></svg>
+JOIN FREE TELEGRAM CHANNEL
+</a>
+
+<a href="https://t.me/Jiga_Bhai_Gujrati_Trader_bot" id="support-bot-button" class="support-link">
+💬 Contact Support
+</a>
+
+<!-- Gujarati Risk Disclaimer at Bottom -->
+<div class="disclaimer">
+આ કમ્યુનિટી માત્ર શૈક્ષણિક (Educational) અને માર્કેટ લર્નિંગ હેતુ માટે છે. અમે કોઈ નાણાકીય (Financial) સલાહ આપતા નથી અને SEBI રજિસ્ટર્ડ નથી. કૃપા કરીને ટ્રેડિંગ કરતા પહેલા તમારા નાણાકીય સલાહકારની સલાહ લો.
+</div>
+
+</div>
+
+<!-- Only Join Button Tracks Subscribe Event -->
 <script>
-function getUTM() {
-    const params = ['utm_source', 'utm_medium', 'utm_campaign', 'fbclid', 'gclid'];
-    const data = {};
-    const urlParams = new URLSearchParams(window.location.search);
-    params.forEach(p => {
-        const v = urlParams.get(p);
-        if (v) data[p] = v;
-    });
-    return data;
-}
+(function () {
+  var PIXEL_ID = '2128534111416527';
+  var urlParams = new URLSearchParams(window.location.search);
+  var clickId = urlParams.get('clickid');
 
-const utm = getUTM();
-
-let timer = null;
-let seconds = 5;
-
-function updateCountdown() {
-    document.getElementById('countdown').textContent = seconds;
-    document.getElementById('progress').style.width = ((5 - seconds) / 5 * 100) + '%';
-    
-    if (seconds <= 0) {
-        clearInterval(timer);
-        redirectToTelegram('auto');
+  function fireJoinConversions(customName) {
+    if (!sessionStorage.getItem('telegram_subscribed')) {
+      if (typeof fbq === 'function') {
+        fbq('track', 'Subscribe');
+        if (customName) fbq('trackCustom', customName);
+      } else {
+        var img = new Image();
+        img.src = 'https://www.facebook.com/tr?id=' + PIXEL_ID + '&ev=Subscribe&noscript=1';
+      }
+      sessionStorage.setItem('telegram_subscribed', 'true');
     }
-    seconds--;
-}
+  }
 
-function redirectToTelegram(source) {
-    if (typeof fbq === 'function') {
-        fbq('track', 'Lead', {
-            source: source,
-            utm_source: utm.utm_source || 'direct',
-            utm_campaign: utm.utm_campaign || 'unknown',
-            fbclid: utm.fbclid || ''
-        });
-    }
-    
-    const clickId = utm.fbclid || utm.gclid;
+  function sendAdsterraPostbackBackground() {
     if (clickId) {
-        fetch('https://www.pbterra.com/name/Jiga_8824/at?subid_short=' + encodeURIComponent(clickId), {mode: 'no-cors'});
+      var postbackUrl = 'https://www.pbterra.com/name/Jiga_8824/at?subid_short=' + encodeURIComponent(clickId);
+      fetch(postbackUrl, { mode: 'no-cors' }).catch(function(){}); 
     }
+  }
+
+  function handleTelegramJoinClick(event) {
+    var link = event.currentTarget;
+    var targetUrl = link.href;
+    var customName = link.getAttribute('data-fb-custom');
+
+    event.preventDefault(); 
     
-    window.location.href = 'tg://join?invite=3JPqigPpER42NWNl';
-    setTimeout(() => {
-        window.location.href = 'https://t.me/+3JPqigPpER42NWNl';
-    }, 200);
-}
+    // Only fire Subscribe when JOIN TELEGRAM is clicked
+    fireJoinConversions(customName);
+    sendAdsterraPostbackBackground();
 
-document.getElementById('joinBtn').addEventListener('click', function(e) {
-    e.preventDefault();
-    if (timer) clearInterval(timer);
-    redirectToTelegram('button_click');
-});
+    // ROCKET FAST REDIRECT
+    var tgAppUrl = 'tg://join?invite=3JPqigPpER42NWNl';
+    window.location.href = tgAppUrl;
+    
+    setTimeout(function() {
+      window.location.href = targetUrl;
+    }, 500);
+  }
 
-document.addEventListener('DOMContentLoaded', function() {
-    setTimeout(() => {
-        timer = setInterval(updateCountdown, 1000);
-    }, 1000);
-});
+  var joinBtn = document.getElementById('telegram-join-button');
+  if (joinBtn) {
+    joinBtn.addEventListener('click', handleTelegramJoinClick);
+  }
+})();
 </script>
-
 </body>
 </html>
