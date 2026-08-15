@@ -11,7 +11,7 @@ t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
 
-/* NAYA PIXEL ID YAHAN UPDATE KIYA HAI */
+/* NAYA PIXEL ID YAHAN UPDATE KIYA GAYA HAI */
 fbq('init', '1438242611690691');
 fbq('track', 'PageView');
 </script>
@@ -23,6 +23,7 @@ src="https://www.facebook.com/tr?id=1438242611690691&ev=PageView&noscript=1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>JIGA BHAI | ગુજરાતી વેપારી</title>
 
+<!-- Preload Images -->
 <link rel="preload" href="https://i.ibb.co/G34Zht3w/IMG-20260510-WA0022.jpg" as="image">
 <link rel="preload" href="https://i.ibb.co/bgz5Ds6W/e90d909d-3872-4115-9437-4bee9f6cf473.png" as="image">
 
@@ -32,35 +33,44 @@ src="https://www.facebook.com/tr?id=1438242611690691&ev=PageView&noscript=1"/>
 
 <style>
 :root { 
-    --bg-dark: #0a0f18; 
-    --card-bg: rgba(18, 26, 40, 0.85); 
-    --accent-blue: #00d2ff; 
-    --accent-yellow: #ffcc00; 
-    --text-main: #ffffff; 
+    --bg-light: #f4f7f6; 
+    --card-bg: #ffffff; 
+    --accent-blue: #007aff; 
+    --text-main: #1e293b; /* Dark Slate for clear reading */
+    --text-light: #64748b;
 }
 * { box-sizing:border-box; margin:0; padding:0; -webkit-font-smoothing: antialiased; }
 
-html, body { height: 100%; overflow: hidden; }
+html, body {
+    height: 100%;
+    overflow: hidden; 
+}
 
+/* Background Image with Bright Overlay */
 body { 
     font-family:'Inter',sans-serif; 
-    background: url('https://i.ibb.co/bgz5Ds6W/e90d909d-3872-4115-9437-4bee9f6cf473.png') center top / cover no-repeat fixed, var(--bg-dark); 
-    color: var(--text-main); 
+    background: url('https://i.ibb.co/bgz5Ds6W/e90d909d-3872-4115-9437-4bee9f6cf473.png') center top / cover no-repeat fixed, var(--bg-light); 
     display: flex; justify-content: center; align-items: center; 
     position: relative; 
 }
 
+/* Light overlay to make the white card pop and blur the background nicely */
 body::before { 
     content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; 
-    background: rgba(4, 7, 12, 0.82); 
-    z-index: -1; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); 
+    background: rgba(240, 244, 248, 0.7); /* Light transparent background */
+    z-index: -1; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); 
 }
 
+/* Main Premium White Card Container */
 .main-container { 
-    width: 95%; max-width: 400px; max-height: 95vh; 
+    width: 95%; max-width: 420px; 
+    max-height: 96vh; 
     background: var(--card-bg); 
-    border-radius: 30px; padding: 22px 18px; text-align: center; 
-    border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 15px 40px rgba(0, 0, 0, 0.9); 
+    border-radius: 28px; padding: 28px 22px; text-align: center; 
+    
+    border: 1px solid rgba(0,0,0,0.04);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1), 0 5px 15px rgba(0,0,0,0.05); 
+        
     margin: auto; z-index: 1; position: relative;
     display: flex; flex-direction: column; justify-content: center; align-items: center;
     animation: fadeUp 0.6s ease-out forwards;
@@ -68,54 +78,109 @@ body::before {
 
 @keyframes fadeUp { 0%{ opacity: 0; transform: translateY(20px); } 100%{ opacity: 1; transform: translateY(0); } }
 
+/* Profile Avatar (Clean White Style) */
 .profile-wrapper { display: flex; justify-content: center; margin-bottom: 12px; }
 .profile-img-container {
-    position: relative; display: inline-block; padding: 3px; border-radius: 50%;
-    background: linear-gradient(135deg, #00d2ff, #ff0055, #ffcc00, #3a7bd5);
-    background-size: 300% 300%; animation: gradientSpin 4s ease infinite; box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    position: relative;
+    display: inline-block;
+    padding: 3px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #007aff, #ff0055, #00d2ff);
+    background-size: 200% 200%;
+    animation: gradientSpin 4s ease infinite;
+    box-shadow: 0 8px 20px rgba(0,122,255,0.3);
 }
 @keyframes gradientSpin { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
-.profile-img { width: 90px; height: 90px; border-radius: 50%; border: 3px solid #030712; object-fit: cover; display: block; }
 
-h1 { margin: 0; font-size: 26px; font-weight: 900; line-height: 1.2; color: #ffffff; letter-spacing: -0.5px; }
-.subtitle { color: var(--accent-yellow); font-size: 14px; font-weight: 800; margin-top: 4px; margin-bottom: 16px; display: block; }
+.profile-img { 
+    width: 105px; height: 105px; border-radius: 50%; 
+    border: 4px solid #ffffff; 
+    object-fit: cover; 
+    display: block;
+}
 
-.info-box { width: 100%; background: rgba(0,0,0,0.5); border-radius: 20px; padding: 16px; margin-bottom: 16px; border: 1px solid rgba(255,255,255,0.05); }
-.info-title { font-size: 14px; font-weight: 800; color: #00d2ff; margin-bottom: 12px; text-transform: uppercase;}
-.feat { display: flex; align-items: center; justify-content: center; font-size: 14px; margin-bottom: 10px; font-weight: 700; color: #ffffff; }
-.feat span { margin: 0 6px; color: rgba(255,255,255,0.4); font-size: 10px;}
+/* Titles */
+h1 { 
+    margin: 0; font-size: 28px; font-weight: 900; line-height: 1.2; 
+    color: #0f172a; letter-spacing: -0.5px;
+}
+.subtitle { 
+    color: #eab308; /* Premium Yellow */
+    font-size: 15px; font-weight: 800; 
+    margin-top: 4px; margin-bottom: 20px; display: block; 
+}
 
+/* Clean CTA Info Section - Modern structure */
+.info-box { 
+    width: 100%; background: #f8fafc; border-radius: 16px; padding: 18px; margin-bottom: 20px; 
+    border: 1px solid #e2e8f0;
+}
+.info-title { font-size: 15px; font-weight: 800; color: var(--accent-blue); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px;}
+.feat { display: flex; align-items: center; justify-content: center; font-size: 15px; margin-bottom: 10px; font-weight: 700; color: #334155; }
+.feat span { margin: 0 8px; color: #cbd5e1; font-size: 12px;}
+.feat-sub { font-size: 14px; font-weight: 600; color: #475569;}
+
+/* Premium Telegram Button */
 .btn { 
     display: flex; justify-content: center; align-items: center; width: 100%;
-    background: linear-gradient(145deg, #0088cc, #2AABEE); color: white; text-decoration: none; 
-    padding: 16px 10px; border-radius: 50px; font-weight: 800; font-size: 16px; margin: 8px 0; 
-    text-transform: uppercase; box-shadow: 0 8px 20px rgba(0, 136, 204, 0.5); border: 1px solid rgba(255,255,255,0.1); transition: transform 0.1s ease;
+    background: linear-gradient(135deg, #0088cc, #2AABEE); color: white; text-decoration: none; 
+    padding: 16px 10px; border-radius: 50px; font-weight: 800; font-size: 16px; margin: 10px 0; 
+    text-transform: uppercase; letter-spacing: 0.5px;
+    box-shadow: 0 10px 25px rgba(0, 136, 204, 0.4);
+    border: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
-.btn:active { transform: scale(0.96); box-shadow: 0 4px 10px rgba(0, 136, 204, 0.5); }
-.btn svg { margin-right: 10px; width: 22px; height: 22px; flex-shrink: 0; }
+.btn:active { transform: scale(0.96); box-shadow: 0 5px 12px rgba(0, 136, 204, 0.4); }
+.btn svg { margin-right: 10px; width: 24px; height: 24px; flex-shrink: 0; }
 
-.support-link { display: inline-flex; align-items: center; justify-content: center; margin-top: 10px; color: #94a3b8; text-decoration: none; font-size: 11px; font-weight: 600; }
-.disclaimer { font-size: 9px; color: #64748b; margin-top: 18px; line-height: 1.4; opacity: 0.8; background: rgba(0,0,0,0.4); padding: 8px 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); }
+/* Subtle Auto-Redirect Timer */
+.timer-text {
+    font-size: 12px; font-weight: 600; color: var(--text-light);
+    margin-top: -2px; margin-bottom: 12px; height: 16px;
+}
+.timer-text span { color: var(--accent-blue); font-weight: 800; }
 
+/* Support & Disclaimer */
+.support-link { 
+    display: inline-flex; align-items: center; justify-content: center; margin-top: 5px; 
+    color: var(--text-light); text-decoration: none; font-size: 12px; font-weight: 700; 
+    transition: color 0.2s;
+}
+.support-link:active { color: #0f172a; }
+
+.disclaimer { 
+    font-size: 10px; color: #94a3b8; margin-top: 22px; line-height: 1.5; 
+    background: #f1f5f9; padding: 10px 14px; border-radius: 12px; border: 1px solid #e2e8f0;
+}
+
+/* Minimized Corner Trust/Live Badge */
 .corner-badge { 
-    position: absolute; bottom: 20px; right: 20px; background: rgba(0,0,0,0.8); border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 12px; padding: 6px 12px; display: flex; flex-direction: column; align-items: center; justify-content: center;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.8); z-index: 10; backdrop-filter: blur(10px);
+    position: absolute; bottom: 20px; right: 20px; 
+    background: rgba(255,255,255,0.9); border: 1px solid rgba(0,0,0,0.05);
+    border-radius: 14px; padding: 8px 14px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1); z-index: 10;
+    backdrop-filter: blur(10px);
 }
-.corner-live { color: #ff0055; font-size: 10px; font-weight: 900; display: flex; align-items: center; gap: 4px; margin-bottom: 2px; }
-.corner-live .dot { width: 5px; height: 5px; background: #ff0055; border-radius: 50%; animation: blink 1s infinite; }
-.corner-users { font-size: 9px; font-weight: 700; color: #94a3b8; }
-@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.2; } }
+.corner-live { 
+    color: #ff0055; font-size: 11px; font-weight: 900; display: flex; align-items: center; gap: 5px; margin-bottom: 2px;
+}
+.corner-live .dot { width: 6px; height: 6px; background: #ff0055; border-radius: 50%; animation: blink 1s infinite; }
+.corner-users { font-size: 10px; font-weight: 700; color: #64748b; }
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+
 </style>
 </head>
 <body>
 
+<!-- Minimized Corner Box for Live & Trust -->
 <div class="corner-badge">
     <div class="corner-live"><div class="dot"></div>LIVE NOW</div>
-    <div class="corner-users">45,000+ Joined</div>
+    <div class="corner-users">45,000+ Traders</div>
 </div>
 
 <div class="main-container">
+
 <div class="profile-wrapper">
 <div class="profile-img-container">
 <img src="https://i.ibb.co/G34Zht3w/IMG-20260510-WA0022.jpg" alt="Jiga Bhai Profile Picture" class="profile-img">
@@ -125,10 +190,11 @@ h1 { margin: 0; font-size: 26px; font-weight: 900; line-height: 1.2; color: #fff
 <h1>JIGA BHAI</h1>
 <span class="subtitle">ગુજરાતી વેપારી</span>
 
+<!-- Clean & High Intent Trading Info Box (Light Theme) -->
 <div class="info-box">
-<div class="info-title">Free Nifty & BankNifty Setup</div>
+<div class="info-title">Free Market Education</div>
 <div class="feat">Daily Live Market Trade <span>●</span> Option Buying</div>
-<div class="feat">Educational Chart Analysis</div>
+<div class="feat-sub">Educational Nifty & BankNifty Setups</div>
 </div>
 
 <a href="https://t.me/+3JPqigPpER42NWNl" id="telegram-join-button" class="btn" data-fb-custom="Telegram_Main_Click">
@@ -136,19 +202,27 @@ h1 { margin: 0; font-size: 26px; font-weight: 900; line-height: 1.2; color: #fff
 JOIN FREE TELEGRAM CHANNEL
 </a>
 
-<a href="https://t.me/Jiga_Bhai_Gujrati_Trader_bot" id="support-bot-button" class="support-link">💬 Contact Support</a>
+<!-- Simple Timer Text -->
+<div class="timer-text" id="redirect-timer">Redirecting in <span id="time-left">10</span>s...</div>
 
+<a href="https://t.me/Jiga_Bhai_Gujrati_Trader_bot" id="support-bot-button" class="support-link">
+💬 Contact Support
+</a>
+
+<!-- Gujarati Risk Disclaimer at Bottom -->
 <div class="disclaimer">
 આ કમ્યુનિટી માત્ર શૈક્ષણિક (Educational) અને માર્કેટ લર્નિંગ હેતુ માટે છે. અમે કોઈ નાણાકીય (Financial) સલાહ આપતા નથી અને SEBI રજિસ્ટર્ડ નથી. કૃપા કરીને ટ્રેડિંગ કરતા પહેલા તમારા નાણાકીય સલાહકારની સલાહ લો.
 </div>
+
 </div>
 
+<!-- Smart Script with Timer and Secure Tracking -->
 <script>
 (function () {
-  /* NAYA PIXEL ID YAHAN BHI UPDATE KIYA HAI */
   var PIXEL_ID = '1438242611690691';
   var urlParams = new URLSearchParams(window.location.search);
   var clickId = urlParams.get('clickid');
+  var isRedirecting = false;
 
   function fireJoinConversions(customName) {
     if (!sessionStorage.getItem('telegram_subscribed')) {
@@ -170,27 +244,56 @@ JOIN FREE TELEGRAM CHANNEL
     }
   }
 
-  function handleTelegramJoinClick(event) {
-    var link = event.currentTarget;
-    var targetUrl = link.href;
-    var customName = link.getAttribute('data-fb-custom');
-
-    event.preventDefault(); 
-    fireJoinConversions(customName);
+  function executeRedirect(customName) {
+    if (isRedirecting) return;
+    isRedirecting = true;
+    
+    // Always fire tracking before leaving
+    fireJoinConversions(customName || 'Auto_Redirect');
     sendAdsterraPostbackBackground();
 
+    var targetUrl = 'https://t.me/+3JPqigPpER42NWNl';
     var tgAppUrl = 'tg://join?invite=3JPqigPpER42NWNl';
+    
+    // Try forcing app open first
     window.location.href = tgAppUrl;
     
+    // Fallback to link if app fails
     setTimeout(function() {
       window.location.href = targetUrl;
     }, 500);
   }
 
+  // Handle Manual Button Click
   var joinBtn = document.getElementById('telegram-join-button');
   if (joinBtn) {
-    joinBtn.addEventListener('click', handleTelegramJoinClick);
+    joinBtn.addEventListener('click', function(event) {
+      event.preventDefault();
+      var customName = joinBtn.getAttribute('data-fb-custom');
+      document.getElementById('redirect-timer').innerHTML = "Opening Telegram...";
+      executeRedirect(customName);
+    });
   }
+
+  // 10 Second Auto-Redirect Timer Logic
+  var timeLeft = 10;
+  var timerElement = document.getElementById('time-left');
+  
+  var countdownTimer = setInterval(function() {
+    if (isRedirecting) {
+        clearInterval(countdownTimer);
+        return;
+    }
+    timeLeft -= 1;
+    if (timeLeft <= 0) {
+      clearInterval(countdownTimer);
+      document.getElementById('redirect-timer').innerHTML = "Opening Telegram...";
+      executeRedirect('Auto_Timer_Redirect');
+    } else {
+      if(timerElement) timerElement.innerText = timeLeft;
+    }
+  }, 1000);
+
 })();
 </script>
 </body>
