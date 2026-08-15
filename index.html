@@ -11,18 +11,18 @@ t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
 
-fbq('init', '2128534111416527');
+/* NAYA PIXEL ID YAHAN UPDATE KIYA HAI */
+fbq('init', '1438242611690691');
 fbq('track', 'PageView');
 </script>
 <noscript>
 <img height="1" width="1" style="display:none" alt=""
-src="https://www.facebook.com/tr?id=2128534111416527&ev=PageView&noscript=1"/>
+src="https://www.facebook.com/tr?id=1438242611690691&ev=PageView&noscript=1"/>
 </noscript>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>JIGA BHAI | ગુજરાતી વેપારી</title>
 
-<!-- Preload Images -->
 <link rel="preload" href="https://i.ibb.co/G34Zht3w/IMG-20260510-WA0022.jpg" as="image">
 <link rel="preload" href="https://i.ibb.co/bgz5Ds6W/e90d909d-3872-4115-9437-4bee9f6cf473.png" as="image">
 
@@ -33,19 +33,15 @@ src="https://www.facebook.com/tr?id=2128534111416527&ev=PageView&noscript=1"/>
 <style>
 :root { 
     --bg-dark: #0a0f18; 
-    --card-bg: rgba(18, 26, 40, 0.85); /* Solid & darker core to prevent eye strain */
+    --card-bg: rgba(18, 26, 40, 0.85); 
     --accent-blue: #00d2ff; 
     --accent-yellow: #ffcc00; 
     --text-main: #ffffff; 
 }
 * { box-sizing:border-box; margin:0; padding:0; -webkit-font-smoothing: antialiased; }
 
-html, body {
-    height: 100%;
-    overflow: hidden; 
-}
+html, body { height: 100%; overflow: hidden; }
 
-/* Background Image setup */
 body { 
     font-family:'Inter',sans-serif; 
     background: url('https://i.ibb.co/bgz5Ds6W/e90d909d-3872-4115-9437-4bee9f6cf473.png') center top / cover no-repeat fixed, var(--bg-dark); 
@@ -54,23 +50,17 @@ body {
     position: relative; 
 }
 
-/* Background Overlay - Darker to create contrast and save eyes */
 body::before { 
     content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; 
     background: rgba(4, 7, 12, 0.82); 
     z-index: -1; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); 
 }
 
-/* Main Container - More solid, less transparent */
 .main-container { 
-    width: 95%; max-width: 400px; 
-    max-height: 95vh; 
+    width: 95%; max-width: 400px; max-height: 95vh; 
     background: var(--card-bg); 
     border-radius: 30px; padding: 22px 18px; text-align: center; 
-    
-    border: 1px solid rgba(255,255,255,0.08);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.9); 
-        
+    border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 15px 40px rgba(0, 0, 0, 0.9); 
     margin: auto; z-index: 1; position: relative;
     display: flex; flex-direction: column; justify-content: center; align-items: center;
     animation: fadeUp 0.6s ease-out forwards;
@@ -78,100 +68,54 @@ body::before {
 
 @keyframes fadeUp { 0%{ opacity: 0; transform: translateY(20px); } 100%{ opacity: 1; transform: translateY(0); } }
 
-/* Profile Avatar */
 .profile-wrapper { display: flex; justify-content: center; margin-bottom: 12px; }
 .profile-img-container {
-    position: relative;
-    display: inline-block;
-    padding: 3px;
-    border-radius: 50%;
+    position: relative; display: inline-block; padding: 3px; border-radius: 50%;
     background: linear-gradient(135deg, #00d2ff, #ff0055, #ffcc00, #3a7bd5);
-    background-size: 300% 300%;
-    animation: gradientSpin 4s ease infinite;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    background-size: 300% 300%; animation: gradientSpin 4s ease infinite; box-shadow: 0 5px 15px rgba(0,0,0,0.5);
 }
-@keyframes gradientSpin { 
-    0% { background-position: 0% 50%; } 
-    50% { background-position: 100% 50%; } 
-    100% { background-position: 0% 50%; } 
-}
-.profile-img { 
-    width: 90px; height: 90px; border-radius: 50%; 
-    border: 3px solid #030712; 
-    object-fit: cover; 
-    display: block;
-}
+@keyframes gradientSpin { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+.profile-img { width: 90px; height: 90px; border-radius: 50%; border: 3px solid #030712; object-fit: cover; display: block; }
 
-/* Titles */
-h1 { 
-    margin: 0; font-size: 26px; font-weight: 900; line-height: 1.2; 
-    color: #ffffff; letter-spacing: -0.5px;
-}
-.subtitle { 
-    color: var(--accent-yellow); font-size: 14px; font-weight: 800; 
-    margin-top: 4px; margin-bottom: 16px; display: block; 
-}
+h1 { margin: 0; font-size: 26px; font-weight: 900; line-height: 1.2; color: #ffffff; letter-spacing: -0.5px; }
+.subtitle { color: var(--accent-yellow); font-size: 14px; font-weight: 800; margin-top: 4px; margin-bottom: 16px; display: block; }
 
-/* Clean CTA Info Box replacing generic features */
-.info-box { 
-    width: 100%; background: rgba(0,0,0,0.5); border-radius: 20px; padding: 16px; margin-bottom: 16px; 
-    border: 1px solid rgba(255,255,255,0.05);
-}
+.info-box { width: 100%; background: rgba(0,0,0,0.5); border-radius: 20px; padding: 16px; margin-bottom: 16px; border: 1px solid rgba(255,255,255,0.05); }
 .info-title { font-size: 14px; font-weight: 800; color: #00d2ff; margin-bottom: 12px; text-transform: uppercase;}
 .feat { display: flex; align-items: center; justify-content: center; font-size: 14px; margin-bottom: 10px; font-weight: 700; color: #ffffff; }
 .feat span { margin: 0 6px; color: rgba(255,255,255,0.4); font-size: 10px;}
 
-/* 3D Telegram Button */
 .btn { 
     display: flex; justify-content: center; align-items: center; width: 100%;
     background: linear-gradient(145deg, #0088cc, #2AABEE); color: white; text-decoration: none; 
     padding: 16px 10px; border-radius: 50px; font-weight: 800; font-size: 16px; margin: 8px 0; 
-    text-transform: uppercase; 
-    box-shadow: 0 8px 20px rgba(0, 136, 204, 0.5);
-    border: 1px solid rgba(255,255,255,0.1);
-    transition: transform 0.1s ease;
+    text-transform: uppercase; box-shadow: 0 8px 20px rgba(0, 136, 204, 0.5); border: 1px solid rgba(255,255,255,0.1); transition: transform 0.1s ease;
 }
 .btn:active { transform: scale(0.96); box-shadow: 0 4px 10px rgba(0, 136, 204, 0.5); }
 .btn svg { margin-right: 10px; width: 22px; height: 22px; flex-shrink: 0; }
 
-/* Support & Disclaimer */
-.support-link { 
-    display: inline-flex; align-items: center; justify-content: center; margin-top: 10px; 
-    color: #94a3b8; text-decoration: none; font-size: 11px; font-weight: 600; 
-}
-.disclaimer { 
-    font-size: 9px; color: #64748b; margin-top: 18px; line-height: 1.4; opacity: 0.8;
-    background: rgba(0,0,0,0.4); padding: 8px 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05);
-}
+.support-link { display: inline-flex; align-items: center; justify-content: center; margin-top: 10px; color: #94a3b8; text-decoration: none; font-size: 11px; font-weight: 600; }
+.disclaimer { font-size: 9px; color: #64748b; margin-top: 18px; line-height: 1.4; opacity: 0.8; background: rgba(0,0,0,0.4); padding: 8px 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); }
 
-/* Minimized Corner Trust/Live Badge */
 .corner-badge { 
-    position: absolute; bottom: 20px; right: 20px; 
-    background: rgba(0,0,0,0.8); border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 12px; padding: 6px 12px;
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.8); z-index: 10;
-    backdrop-filter: blur(10px);
+    position: absolute; bottom: 20px; right: 20px; background: rgba(0,0,0,0.8); border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px; padding: 6px 12px; display: flex; flex-direction: column; align-items: center; justify-content: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.8); z-index: 10; backdrop-filter: blur(10px);
 }
-.corner-live { 
-    color: #ff0055; font-size: 10px; font-weight: 900; display: flex; align-items: center; gap: 4px; margin-bottom: 2px;
-}
+.corner-live { color: #ff0055; font-size: 10px; font-weight: 900; display: flex; align-items: center; gap: 4px; margin-bottom: 2px; }
 .corner-live .dot { width: 5px; height: 5px; background: #ff0055; border-radius: 50%; animation: blink 1s infinite; }
 .corner-users { font-size: 9px; font-weight: 700; color: #94a3b8; }
 @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.2; } }
-
 </style>
 </head>
 <body>
 
-<!-- Minimized Corner Box for Live & Trust -->
 <div class="corner-badge">
     <div class="corner-live"><div class="dot"></div>LIVE NOW</div>
     <div class="corner-users">45,000+ Joined</div>
 </div>
 
 <div class="main-container">
-
 <div class="profile-wrapper">
 <div class="profile-img-container">
 <img src="https://i.ibb.co/G34Zht3w/IMG-20260510-WA0022.jpg" alt="Jiga Bhai Profile Picture" class="profile-img">
@@ -181,36 +125,28 @@ h1 {
 <h1>JIGA BHAI</h1>
 <span class="subtitle">ગુજરાતી વેપારી</span>
 
-<!-- Clean & High Intent Trading Info Box -->
 <div class="info-box">
 <div class="info-title">Free Nifty & BankNifty Setup</div>
 <div class="feat">Daily Live Market Trade <span>●</span> Option Buying</div>
 <div class="feat">Educational Chart Analysis</div>
 </div>
 
-<a href="https://t.me/+3JPqigPpER42NWNl"
-id="telegram-join-button"
-class="btn"
-data-fb-custom="Telegram_Main_Click">
+<a href="https://t.me/+3JPqigPpER42NWNl" id="telegram-join-button" class="btn" data-fb-custom="Telegram_Main_Click">
 <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20.665 3.717l-17.73 6.837c-1.21.486-1.203 1.161-.222 1.462l4.552 1.42 10.532-6.645c.498-.303.953-.14.579.192l-8.533 7.701h-.002l.002.002-.314 4.692c.46 0 .663-.211.921-.46l2.211-2.15 4.599 3.397c.848.467 1.457.227 1.668-.785l3.019-14.228c.309-1.239-.473-1.8-1.282-1.435z" fill="#ffffff"/></svg>
 JOIN FREE TELEGRAM CHANNEL
 </a>
 
-<a href="https://t.me/Jiga_Bhai_Gujrati_Trader_bot" id="support-bot-button" class="support-link">
-💬 Contact Support
-</a>
+<a href="https://t.me/Jiga_Bhai_Gujrati_Trader_bot" id="support-bot-button" class="support-link">💬 Contact Support</a>
 
-<!-- Gujarati Risk Disclaimer at Bottom -->
 <div class="disclaimer">
 આ કમ્યુનિટી માત્ર શૈક્ષણિક (Educational) અને માર્કેટ લર્નિંગ હેતુ માટે છે. અમે કોઈ નાણાકીય (Financial) સલાહ આપતા નથી અને SEBI રજિસ્ટર્ડ નથી. કૃપા કરીને ટ્રેડિંગ કરતા પહેલા તમારા નાણાકીય સલાહકારની સલાહ લો.
 </div>
-
 </div>
 
-<!-- Only Join Button Tracks Subscribe Event -->
 <script>
 (function () {
-  var PIXEL_ID = '2128534111416527';
+  /* NAYA PIXEL ID YAHAN BHI UPDATE KIYA HAI */
+  var PIXEL_ID = '1438242611690691';
   var urlParams = new URLSearchParams(window.location.search);
   var clickId = urlParams.get('clickid');
 
@@ -240,12 +176,9 @@ JOIN FREE TELEGRAM CHANNEL
     var customName = link.getAttribute('data-fb-custom');
 
     event.preventDefault(); 
-    
-    // Only fire Subscribe when JOIN TELEGRAM is clicked
     fireJoinConversions(customName);
     sendAdsterraPostbackBackground();
 
-    // ROCKET FAST REDIRECT
     var tgAppUrl = 'tg://join?invite=3JPqigPpER42NWNl';
     window.location.href = tgAppUrl;
     
