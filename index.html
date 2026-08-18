@@ -1,6 +1,11 @@
 <!DOCTYPE html>
-<html lang="gu">
+<html lang="en">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>JIGA BHAI | Nifty & BankNifty Market Setup</title>
+
+<!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -10,234 +15,333 @@ n.queue=[];t=b.createElement(e);t.async=!0;
 t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
-
-/* NAYA PIXEL ID YAHAN UPDATE KIYA GAYA HAI */
 fbq('init', '1438242611690691');
 fbq('track', 'PageView');
 </script>
-<noscript>
-<img height="1" width="1" style="display:none" alt=""
-src="https://www.facebook.com/tr?id=1438242611690691&ev=PageView&noscript=1"/>
-</noscript>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>JIGA BHAI | ગુજરાતી વેપારી</title>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1438242611690691&ev=PageView&noscript=1"
+/></noscript>
 
-<!-- Preload Images -->
-<link rel="preload" href="https://i.ibb.co/G34Zht3w/IMG-20260510-WA0022.jpg" as="image">
-<link rel="preload" href="https://i.ibb.co/bgz5Ds6W/e90d909d-3872-4115-9437-4bee9f6cf473.png" as="image">
-
+<!-- Fonts & Preloads -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="preload" href="https://i.ibb.co/G34Zht3w/IMG-20260510-WA0022.jpg" as="image">
 
 <style>
-:root { 
-    --bg-light: #f4f7f6; 
-    --card-bg: #ffffff; 
-    --accent-blue: #007aff; 
-    --text-main: #1e293b; /* Dark Slate for clear reading */
-    --text-light: #64748b;
+:root {
+    --primary: #007aff;
+    --cyan: #00d2ff;
+    --navy: #0f172a;
+    --slate: #334155;
+    --light-slate: #64748b;
+    --bg-main: #f4f7f9;
+    --card-bg: #ffffff;
+    --border: rgba(15, 23, 42, 0.08);
 }
-* { box-sizing:border-box; margin:0; padding:0; -webkit-font-smoothing: antialiased; }
 
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-font-smoothing: antialiased; }
+
+/* HARD LOCK SCROLLING - 100% VIEWPORT EXACT FIT */
 html, body {
-    height: 100%;
-    overflow: hidden; 
+    width: 100%; height: 100%; overflow: hidden;
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-main);
+    /* Premium Subtle Market Grid + Radial Glows */
+    background-image: 
+        radial-gradient(circle at 15% 20%, rgba(0, 122, 255, 0.08), transparent 40%),
+        radial-gradient(circle at 85% 80%, rgba(0, 210, 255, 0.08), transparent 40%),
+        linear-gradient(rgba(15, 23, 42, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(15, 23, 42, 0.03) 1px, transparent 1px);
+    background-size: 100% 100%, 100% 100%, 30px 30px, 30px 30px;
+    color: var(--navy);
 }
 
-/* Background Image with Bright Overlay */
-body { 
-    font-family:'Inter',sans-serif; 
-    background: url('https://i.ibb.co/bgz5Ds6W/e90d909d-3872-4115-9437-4bee9f6cf473.png') center top / cover no-repeat fixed, var(--bg-light); 
-    display: flex; justify-content: center; align-items: center; 
-    position: relative; 
+/* Outer padding constraint to keep UI floating inside screen */
+body {
+    padding: clamp(8px, 2vh, 24px);
+    display: flex; justify-content: center; align-items: center;
 }
 
-/* Light overlay to make the white card pop and blur the background nicely */
-body::before { 
-    content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; 
-    background: rgba(240, 244, 248, 0.7); /* Light transparent background */
-    z-index: -1; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); 
+/* Master Window */
+.app-window {
+    width: 100%; max-width: 1100px; height: 100%;
+    background: var(--card-bg);
+    border-radius: 24px;
+    box-shadow: 0 20px 40px -10px rgba(0,0,0,0.1), 0 0 0 1px var(--border);
+    padding: clamp(12px, 3vh, 40px);
+    display: grid;
+    /* CSS Grid forces layout into predefined non-scrollable slots */
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto 1fr auto auto;
+    grid-template-areas: 
+        "brand      preview"
+        "hero       preview"
+        "chips      preview"
+        "cta        preview"
+        "trust      preview"
+        "discl      preview";
+    gap: 15px 40px;
 }
 
-/* Main Premium White Card Container */
-.main-container { 
-    width: 95%; max-width: 420px; 
-    max-height: 96vh; 
-    background: var(--card-bg); 
-    border-radius: 28px; padding: 24px 20px; text-align: center; 
-    
-    border: 1px solid rgba(0,0,0,0.04);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1), 0 5px 15px rgba(0,0,0,0.05); 
-        
-    margin: auto; z-index: 1; position: relative;
-    display: flex; flex-direction: column; justify-content: center; align-items: center;
-    animation: fadeUp 0.6s ease-out forwards;
-}
+/* BRAND HEADER */
+.area-brand { grid-area: brand; display: flex; justify-content: space-between; align-items: center; }
+.brand-left { display: flex; align-items: center; gap: 10px; }
+.brand-left img { width: 42px; height: 42px; border-radius: 50%; object-fit: cover; border: 2px solid #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+.brand-info { display: flex; flex-direction: column; }
+.brand-name { font-weight: 900; font-size: 14px; letter-spacing: -0.2px; color: var(--navy); }
+.brand-sub { font-size: 9px; font-weight: 700; color: var(--light-slate); letter-spacing: 0.5px; }
 
-@keyframes fadeUp { 0%{ opacity: 0; transform: translateY(20px); } 100%{ opacity: 1; transform: translateY(0); } }
+.status-badge { display: flex; align-items: center; gap: 5px; font-size: 10px; font-weight: 800; color: var(--slate); background: #f1f5f9; padding: 5px 10px; border-radius: 50px; }
+.status-badge .dot { width: 6px; height: 6px; background: #10b981; border-radius: 50%; box-shadow: 0 0 6px #10b981; }
 
-/* Profile Avatar (Clean White Style) */
-.profile-wrapper { display: flex; justify-content: center; margin-bottom: 12px; }
-.profile-img-container {
-    position: relative;
-    display: inline-block;
-    padding: 3px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #007aff, #ff0055, #00d2ff);
-    background-size: 200% 200%;
-    animation: gradientSpin 4s ease infinite;
-    box-shadow: 0 8px 20px rgba(0,122,255,0.3);
-}
-@keyframes gradientSpin { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+/* HERO SECTION */
+.area-hero { grid-area: hero; display: flex; flex-direction: column; justify-content: center; }
+.eyebrow { font-size: clamp(10px, 1.5vw, 12px); font-weight: 800; color: var(--primary); letter-spacing: 1px; margin-bottom: 8px; }
+h1 { font-size: clamp(24px, 4vw, 42px); font-weight: 900; line-height: 1.1; margin-bottom: 12px; letter-spacing: -1px; }
+h1 span { color: var(--primary); }
+.hero-desc { font-size: clamp(12px, 1.5vw, 15px); font-weight: 500; color: var(--slate); line-height: 1.4; max-width: 90%; }
 
-.profile-img { 
-    width: 100px; height: 100px; border-radius: 50%; 
-    border: 4px solid #ffffff; 
-    object-fit: cover; 
-    display: block;
-}
+/* HIGHLIGHT CHIPS */
+.area-chips { grid-area: chips; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.chip { display: flex; flex-direction: column; background: #f8fafc; border: 1px solid #e2e8f0; padding: 10px 14px; border-radius: 12px; min-width: 110px; }
+.chip-head { display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 800; color: var(--navy); }
+.chip-sub { font-size: 10px; font-weight: 600; color: var(--light-slate); margin-top: 4px; }
 
-/* Titles */
-h1 { 
-    margin: 0; font-size: 26px; font-weight: 900; line-height: 1.2; 
-    color: #0f172a; letter-spacing: -0.5px;
-}
-.subtitle { 
-    color: #eab308; /* Premium Yellow */
-    font-size: 14px; font-weight: 800; 
-    margin-top: 4px; margin-bottom: 18px; display: block; 
-}
-
-/* Clean CTA Info Section - Modern structure */
-.info-box { 
-    width: 100%; background: #f8fafc; border-radius: 16px; padding: 16px; margin-bottom: 16px; 
-    border: 1px solid #e2e8f0;
-}
-.info-title { font-size: 14px; font-weight: 800; color: var(--accent-blue); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.5px;}
-.feat { display: flex; align-items: center; justify-content: center; font-size: 14px; margin-bottom: 8px; font-weight: 700; color: #334155; }
-.feat span { margin: 0 8px; color: #cbd5e1; font-size: 12px;}
-.feat-sub { font-size: 13px; font-weight: 600; color: #475569;}
-
-/* **NEW: Mission Text Box (Trust Builder)** */
-.mission-text {
-    font-size: 11px;
-    font-weight: 600;
-    color: #0f172a;
-    line-height: 1.5;
-    background: linear-gradient(135deg, rgba(0, 122, 255, 0.05), rgba(0, 210, 255, 0.05));
-    border-left: 3px solid var(--accent-blue);
-    padding: 10px 14px;
-    margin-bottom: 16px;
-    border-radius: 0 8px 8px 0;
-    text-align: left;
-    font-style: italic;
-}
-.mission-text strong { color: var(--accent-blue); }
-
-/* Premium Telegram Button */
+/* CTA AREA */
+.area-cta { grid-area: cta; display: flex; flex-direction: column; justify-content: center; }
+.cta-hook { font-size: 12px; font-weight: 700; color: var(--slate); margin-bottom: 8px; }
 .btn { 
-    display: flex; justify-content: center; align-items: center; width: 100%;
-    background: linear-gradient(135deg, #0088cc, #2AABEE); color: white; text-decoration: none; 
-    padding: 14px 10px; border-radius: 50px; font-weight: 800; font-size: 15px; margin: 8px 0; 
-    text-transform: uppercase; letter-spacing: 0.5px;
-    box-shadow: 0 10px 25px rgba(0, 136, 204, 0.4);
-    border: none;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex; justify-content: center; align-items: center; gap: 8px;
+    width: 100%; padding: 18px; border-radius: 50px; 
+    background: linear-gradient(135deg, var(--primary), var(--cyan)); 
+    color: #fff; font-size: clamp(14px, 2vw, 16px); font-weight: 800; text-transform: uppercase; 
+    text-decoration: none; border: none; letter-spacing: 0.5px;
+    box-shadow: 0 10px 25px rgba(0, 122, 255, 0.3), inset 0 -2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.15s ease, box-shadow 0.15s ease; cursor: pointer;
 }
-.btn:active { transform: scale(0.96); box-shadow: 0 5px 12px rgba(0, 136, 204, 0.4); }
-.btn svg { margin-right: 10px; width: 22px; height: 22px; flex-shrink: 0; }
+.btn:active { transform: scale(0.97); box-shadow: 0 5px 15px rgba(0, 122, 255, 0.3); }
+.btn svg { width: 22px; height: 22px; }
+.cta-sub { font-size: 11px; font-weight: 600; color: var(--light-slate); text-align: center; margin-top: 10px; }
 
-/* Subtle Auto-Redirect Timer */
-.timer-text {
-    font-size: 11px; font-weight: 600; color: var(--text-light);
-    margin-top: -2px; margin-bottom: 10px; height: 16px;
-}
-.timer-text span { color: var(--accent-blue); font-weight: 800; }
+/* MICRO TRUST */
+.area-trust { grid-area: trust; display: flex; justify-content: center; gap: 15px; border-top: 1px solid #f1f5f9; padding-top: 15px; }
+.trust-item { font-size: 10px; font-weight: 700; color: var(--slate); display: flex; align-items: center; gap: 4px; }
+.trust-item span { color: #10b981; }
 
-/* Support & Disclaimer */
-.support-link { 
-    display: inline-flex; align-items: center; justify-content: center; margin-top: 2px; 
-    color: var(--text-light); text-decoration: none; font-size: 11px; font-weight: 700; 
-    transition: color 0.2s;
-}
-.support-link:active { color: #0f172a; }
+/* DISCLAIMER */
+.area-discl { grid-area: discl; text-align: center; }
+.disclaimer-text { font-size: 9px; font-weight: 500; color: #94a3b8; line-height: 1.4; }
 
-.disclaimer { 
-    font-size: 9px; color: #94a3b8; margin-top: 18px; line-height: 1.4; 
-    background: #f1f5f9; padding: 10px 14px; border-radius: 12px; border: 1px solid #e2e8f0;
+/* TELEGRAM PREVIEW (RIGHT COLUMN) */
+.area-preview { 
+    grid-area: preview; display: flex; align-items: center; justify-content: center; 
+    /* The preview container shrinks if needed */
+    min-height: 0; overflow: hidden; 
+}
+.tg-mockup {
+    width: 100%; max-width: 380px; height: 100%; max-height: 450px;
+    background: rgba(255,255,255,0.7); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.5); border-radius: 24px;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.06), inset 0 0 0 1px rgba(255,255,255,0.8);
+    display: flex; flex-direction: column; overflow: hidden;
+    /* Subtle 3D tilt */
+    transform: perspective(1000px) rotateY(-5deg) rotateX(2deg);
+    transition: transform 0.3s;
+}
+.tg-mockup:hover { transform: perspective(1000px) rotateY(0deg) rotateX(0deg); }
+
+.tg-header {
+    background: #ffffff; padding: 16px; display: flex; flex-direction: column; align-items: center;
+    border-bottom: 1px solid #f1f5f9; position: relative; z-index: 2;
+}
+.tg-header-title { font-size: 14px; font-weight: 800; color: var(--navy); }
+.tg-header-sub { font-size: 10px; font-weight: 600; color: var(--primary); margin-top: 2px; }
+
+.tg-body {
+    flex: 1; min-height: 0; background: #f4f7f9; padding: 15px; 
+    display: flex; flex-direction: column; gap: 12px; overflow: hidden;
+}
+.tg-sample-label { text-align: center; font-size: 9px; font-weight: 800; color: #94a3b8; letter-spacing: 1px; margin-bottom: 4px; }
+
+.tg-msg {
+    background: #ffffff; padding: 12px 14px; border-radius: 14px; border-bottom-left-radius: 4px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.02); font-size: 12px; line-height: 1.5; color: var(--slate);
+    position: relative; animation: slideIn 0.5s ease forwards; opacity: 0;
+}
+.tg-msg:nth-child(2) { animation-delay: 0.1s; }
+.tg-msg:nth-child(3) { animation-delay: 0.2s; }
+.tg-msg:nth-child(4) { animation-delay: 0.3s; }
+@keyframes slideIn { from { transform: translateY(10px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+.tg-msg strong { color: var(--navy); font-size: 12.5px; display: block; margin-bottom: 3px; }
+.tg-time { display: block; text-align: right; font-size: 9px; font-weight: 600; color: #cbd5e1; margin-top: 4px; }
+
+
+/* ==================================================
+   MOBILE RESPONSIVENESS - STRICT SINGLE SCREEN
+   ================================================== */
+@media (max-width: 850px) {
+    .app-window {
+        padding: clamp(10px, 2vh, 16px);
+        /* Redefine grid for mobile column structure */
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto minmax(0, 1fr) auto auto auto;
+        grid-template-areas: 
+            "brand"
+            "chips"
+            "hero"
+            "preview"
+            "cta"
+            "trust"
+            "discl";
+        gap: clamp(6px, 1.5vh, 12px) 0;
+        border-radius: 20px;
+    }
+    
+    /* Shrink elements aggressively to avoid scroll */
+    .brand-left img { width: 32px; height: 32px; }
+    .brand-name { font-size: 13px; }
+    .status-badge { font-size: 9px; padding: 4px 8px; }
+    
+    .eyebrow { margin-bottom: 2px; }
+    h1 { font-size: clamp(20px, 6vw, 24px); margin-bottom: 4px; }
+    .hero-desc { font-size: clamp(11px, 3vw, 13px); max-width: 100%; }
+    
+    .area-chips { justify-content: space-between; gap: 5px; }
+    .chip { min-width: 0; flex: 1; padding: 6px 4px; align-items: center; border-radius: 8px; }
+    .chip-head { font-size: 10px; gap: 4px; }
+    .chip-head .icon { font-size: 12px; }
+    .chip-sub { font-size: 8px; text-align: center; }
+    
+    .cta-hook { font-size: 11px; margin-bottom: 4px; }
+    .btn { padding: 14px; font-size: 14px; }
+    .btn svg { width: 18px; height: 18px; }
+    .cta-sub { margin-top: 6px; font-size: 10px; }
+    
+    .area-trust { padding-top: 8px; gap: 10px; }
+    .trust-item { font-size: 9px; }
+    
+    .disclaimer-text { font-size: 8px; }
+    
+    /* The Preview must flexibly crush down if height is small */
+    .tg-mockup { max-width: 100%; transform: none; box-shadow: 0 10px 20px rgba(0,0,0,0.05), inset 0 0 0 1px rgba(0,0,0,0.05); border-radius: 16px;}
+    .tg-mockup:hover { transform: none; }
+    .tg-header { padding: 8px; }
+    .tg-header-title { font-size: 12px; }
+    .tg-body { padding: 8px; gap: 6px; }
+    .tg-sample-label { font-size: 8px; margin-bottom: 2px; }
+    .tg-msg { padding: 8px 10px; font-size: 11px; line-height: 1.3; }
+    .tg-msg strong { font-size: 11.5px; margin-bottom: 1px; }
+    .tg-time { font-size: 8px; margin-top: 2px; }
+    
+    /* Hide the 3rd message on mobile to guarantee it fits vertically */
+    .hide-mobile { display: none; }
 }
 
-/* Minimized Corner Trust/Live Badge */
-.corner-badge { 
-    position: absolute; bottom: 20px; right: 20px; 
-    background: rgba(255,255,255,0.9); border: 1px solid rgba(0,0,0,0.05);
-    border-radius: 14px; padding: 8px 14px;
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1); z-index: 10;
-    backdrop-filter: blur(10px);
+/* Extra small height constraint (e.g. iPhone SE landscape/tiny phones) */
+@media (max-height: 650px) and (max-width: 850px) {
+    .app-window { gap: 4px 0; }
+    .hero-desc { display: none; } /* Hide description if vertically starved */
+    .btn { padding: 12px; }
 }
-.corner-live { 
-    color: #ff0055; font-size: 11px; font-weight: 900; display: flex; align-items: center; gap: 5px; margin-bottom: 2px;
-}
-.corner-live .dot { width: 6px; height: 6px; background: #ff0055; border-radius: 50%; animation: blink 1s infinite; }
-.corner-users { font-size: 10px; font-weight: 700; color: #64748b; }
-@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
-
 </style>
 </head>
 <body>
 
-<!-- Minimized Corner Box for Live & Trust -->
-<div class="corner-badge">
-    <div class="corner-live"><div class="dot"></div>LIVE NOW</div>
-    <div class="corner-users">45,000+ Traders</div>
+<div class="app-window">
+    
+    <!-- AREA: BRAND -->
+    <div class="area-brand">
+        <div class="brand-left">
+            <img src="https://i.ibb.co/G34Zht3w/IMG-20260510-WA0022.jpg" alt="Jiga Bhai">
+            <div class="brand-info">
+                <span class="brand-name">JIGA BHAI</span>
+                <span class="brand-sub">INDIAN STOCK MARKET COMMUNITY</span>
+            </div>
+        </div>
+        <div class="status-badge"><span class="dot"></span> MARKET COMMUNITY</div>
+    </div>
+    
+    <!-- AREA: HERO -->
+    <div class="area-hero">
+        <div class="eyebrow">NIFTY • BANKNIFTY • STOCK MARKET</div>
+        <h1>Know the Market.<br><span>Before You Trade.</span></h1>
+        <p class="hero-desc">Daily market updates, important levels & educational trade setups — delivered directly on Telegram.</p>
+    </div>
+    
+    <!-- AREA: CHIPS -->
+    <div class="area-chips">
+        <div class="chip">
+            <div class="chip-head"><span class="icon">📊</span> NIFTY</div>
+            <div class="chip-sub">Market Levels</div>
+        </div>
+        <div class="chip">
+            <div class="chip-head"><span class="icon">⚡</span> BANKNIFTY</div>
+            <div class="chip-sub">Intraday Updates</div>
+        </div>
+        <div class="chip">
+            <div class="chip-head"><span class="icon">📈</span> STOCKS</div>
+            <div class="chip-sub">Market Watch</div>
+        </div>
+    </div>
+    
+    <!-- AREA: TELEGRAM PREVIEW -->
+    <div class="area-preview">
+        <div class="tg-mockup">
+            <div class="tg-header">
+                <div class="tg-header-title">JIGA BHAI MARKET</div>
+                <div class="tg-header-sub">Telegram Community</div>
+            </div>
+            <div class="tg-body">
+                <div class="tg-sample-label">SAMPLE MARKET UPDATES</div>
+                
+                <div class="tg-msg">
+                    <strong>📊 NIFTY UPDATE</strong>
+                    Important zone under observation. Price action forming near support.
+                    <span class="tg-time">09:15 AM</span>
+                </div>
+                
+                <div class="tg-msg">
+                    <strong>⚡ BANKNIFTY</strong>
+                    Momentum shift. Key levels being monitored for educational analysis.
+                    <span class="tg-time">10:30 AM</span>
+                </div>
+                
+                <div class="tg-msg hide-mobile">
+                    <strong>📈 STOCK WATCH</strong>
+                    Selected high-weightage stocks under observation.
+                    <span class="tg-time">01:15 PM</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- AREA: CTA -->
+    <div class="area-cta">
+        <div class="cta-hook">Your next market update is just one tap away.</div>
+        <button id="telegram-join-button" class="btn" data-fb-custom="telegram_cta_click">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20.665 3.717l-17.73 6.837c-1.21.486-1.203 1.161-.222 1.462l4.552 1.42 10.532-6.645c.498-.303.953-.14.579.192l-8.533 7.701h-.002l.002.002-.314 4.692c.46 0 .663-.211.921-.46l2.211-2.15 4.599 3.397c.848.467 1.457.227 1.668-.785l3.019-14.228c.309-1.239-.473-1.8-1.282-1.435z" fill="#ffffff"/></svg>
+            <span id="btn-text">🚀 JOIN FREE TELEGRAM</span>
+        </button>
+        <div class="cta-sub">Free to join • No subscription fee</div>
+    </div>
+    
+    <!-- AREA: TRUST -->
+    <div class="area-trust">
+        <div class="trust-item"><span>✓</span> NIFTY</div>
+        <div class="trust-item"><span>✓</span> BANKNIFTY</div>
+        <div class="trust-item"><span>✓</span> STOCK MARKET</div>
+    </div>
+    
+    <!-- AREA: DISCLAIMER -->
+    <div class="area-discl">
+        <p class="disclaimer-text">Market investments are subject to market risks. Content is for educational/informational purposes only.</p>
+    </div>
+
 </div>
 
-<div class="main-container">
-
-<div class="profile-wrapper">
-<div class="profile-img-container">
-<img src="https://i.ibb.co/G34Zht3w/IMG-20260510-WA0022.jpg" alt="Jiga Bhai Profile Picture" class="profile-img">
-</div>
-</div>
-
-<h1>JIGA BHAI</h1>
-<span class="subtitle">ગુજરાતી વેપારી</span>
-
-<!-- NEW: Trust Builder Mission Text -->
-<div class="mission-text">
-    "<strong>My Mission:</strong> To transform 1 lakh Gujrati traders into financially independent market warriors by 2027 — through free education, transparent logic, and a brotherhood of winners."
-</div>
-
-<!-- Clean & High Intent Trading Info Box (Light Theme) -->
-<div class="info-box">
-<div class="info-title">Free Market Education</div>
-<div class="feat">Daily Live Market Trade <span>●</span> Option Buying</div>
-<div class="feat-sub">Educational Nifty & BankNifty Setups</div>
-</div>
-
-<a href="https://t.me/+3JPqigPpER42NWNl" id="telegram-join-button" class="btn" data-fb-custom="Telegram_Main_Click">
-<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20.665 3.717l-17.73 6.837c-1.21.486-1.203 1.161-.222 1.462l4.552 1.42 10.532-6.645c.498-.303.953-.14.579.192l-8.533 7.701h-.002l.002.002-.314 4.692c.46 0 .663-.211.921-.46l2.211-2.15 4.599 3.397c.848.467 1.457.227 1.668-.785l3.019-14.228c.309-1.239-.473-1.8-1.282-1.435z" fill="#ffffff"/></svg>
-JOIN FREE TELEGRAM CHANNEL
-</a>
-
-<!-- Simple Timer Text -->
-<div class="timer-text" id="redirect-timer">Redirecting in <span id="time-left">10</span>s...</div>
-
-<a href="https://t.me/Jiga_Bhai_Gujrati_Trader_bot" id="support-bot-button" class="support-link">
-💬 Contact Support
-</a>
-
-<!-- Gujarati Risk Disclaimer at Bottom -->
-<div class="disclaimer">
-આ કમ્યુનિટી માત્ર શૈક્ષણિક (Educational) અને માર્કેટ લર્નિંગ હેતુ માટે છે. અમે કોઈ નાણાકીય (Financial) સલાહ આપતા નથી અને SEBI રજિસ્ટર્ડ નથી. કૃપા કરીને ટ્રેડિંગ કરતા પહેલા તમારા નાણાકીય સલાહકારની સલાહ લો.
-</div>
-
-</div>
-
-<!-- Smart Script with Timer and Secure Tracking -->
+<!-- SCRIPT: Tracking & Immediate Redirection (No Timers) -->
 <script>
 (function () {
   var PIXEL_ID = '1438242611690691';
@@ -245,77 +349,58 @@ JOIN FREE TELEGRAM CHANNEL
   var clickId = urlParams.get('clickid');
   var isRedirecting = false;
 
-  function fireJoinConversions(customName) {
+  function handleCTA(event) {
+    event.preventDefault();
+    if (isRedirecting) return;
+    isRedirecting = true;
+    
+    var btn = event.currentTarget;
+    var btnText = document.getElementById('btn-text');
+    var customName = btn.getAttribute('data-fb-custom') || 'telegram_cta_click';
+    var targetUrl = 'https://t.me/+3JPqigPpER42NWNl';
+
+    // 1. FIRE META PIXEL
     if (!sessionStorage.getItem('telegram_subscribed')) {
       if (typeof fbq === 'function') {
-        fbq('track', 'Subscribe');
-        if (customName) fbq('trackCustom', customName);
+        // Core standard event
+        fbq('track', 'Subscribe', { value: 0.00, currency: 'INR' });
+        // Custom CTA click event as requested
+        fbq('trackCustom', customName);
       } else {
         var img = new Image();
         img.src = 'https://www.facebook.com/tr?id=' + PIXEL_ID + '&ev=Subscribe&noscript=1';
       }
       sessionStorage.setItem('telegram_subscribed', 'true');
     }
-  }
 
-  function sendAdsterraPostbackBackground() {
+    // 2. ADSTERRA PING
     if (clickId) {
-      var postbackUrl = 'https://www.pbterra.com/name/Jiga_8824/at?subid_short=' + encodeURIComponent(clickId);
-      fetch(postbackUrl, { mode: 'no-cors' }).catch(function(){}); 
+      fetch('https://www.pbterra.com/name/Jiga_8824/at?subid_short=' + encodeURIComponent(clickId), { mode: 'no-cors' }).catch(function(){}); 
     }
+
+    // 3. FAST FEEDBACK & REDIRECT (2 Second Max Wait)
+    var countdown = 2;
+    if(btnText) btnText.innerHTML = 'Opening Telegram... ' + countdown;
+    btn.style.opacity = '0.9';
+    
+    var timer = setInterval(function() {
+      countdown--;
+      if (countdown > 0) {
+          if(btnText) btnText.innerHTML = 'Opening Telegram... ' + countdown;
+      } else {
+          clearInterval(timer);
+          // Redirect bypassing in-app sandboxes safely
+          window.top.location.href = targetUrl;
+      }
+    }, 1000);
   }
 
-  function executeRedirect(customName) {
-    if (isRedirecting) return;
-    isRedirecting = true;
-    
-    // Always fire tracking before leaving
-    fireJoinConversions(customName || 'Auto_Redirect');
-    sendAdsterraPostbackBackground();
-
-    var targetUrl = 'https://t.me/+3JPqigPpER42NWNl';
-    var tgAppUrl = 'tg://join?invite=3JPqigPpER42NWNl';
-    
-    // Try forcing app open first
-    window.location.href = tgAppUrl;
-    
-    // Fallback to link if app fails
-    setTimeout(function() {
-      window.location.href = targetUrl;
-    }, 500);
-  }
-
-  // Handle Manual Button Click
   var joinBtn = document.getElementById('telegram-join-button');
   if (joinBtn) {
-    joinBtn.addEventListener('click', function(event) {
-      event.preventDefault();
-      var customName = joinBtn.getAttribute('data-fb-custom');
-      document.getElementById('redirect-timer').innerHTML = "Opening Telegram...";
-      executeRedirect(customName);
-    });
+    joinBtn.addEventListener('click', handleCTA);
   }
-
-  // 10 Second Auto-Redirect Timer Logic
-  var timeLeft = 10;
-  var timerElement = document.getElementById('time-left');
-  
-  var countdownTimer = setInterval(function() {
-    if (isRedirecting) {
-        clearInterval(countdownTimer);
-        return;
-    }
-    timeLeft -= 1;
-    if (timeLeft <= 0) {
-      clearInterval(countdownTimer);
-      document.getElementById('redirect-timer').innerHTML = "Opening Telegram...";
-      executeRedirect('Auto_Timer_Redirect');
-    } else {
-      if(timerElement) timerElement.innerText = timeLeft;
-    }
-  }, 1000);
-
 })();
 </script>
+
 </body>
 </html>
