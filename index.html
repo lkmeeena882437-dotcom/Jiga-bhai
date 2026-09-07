@@ -11,9 +11,12 @@ t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
 
+// Add ?pxoff=1 to the URL to send ZERO data (your own clicks, QA, previews must not train the pixel)
+if (!/[?&]pxoff=1/.test(window.location.search)) {
 fbq('init', '1626919985731030');
 fbq('track', 'PageView');
-fbq('track', 'ViewContent', {content_name: 'JIGA BHAI - Free Telegram Market Updates', content_category: 'telegram_lp', currency: 'INR', value: 0});
+fbq('track', 'ViewContent', {content_name: 'JIGA BHAI - NIFTY BANKNIFTY Free Telegram Updates', content_category: 'stock_market_education', content_type: 'lead', currency: 'INR', value: 0});
+}
 </script>
 
 <noscript><img height="1" width="1" style="display:none"
@@ -643,61 +646,155 @@ Disclaimer: We are NOT a SEBI registered investment advisor. This content is str
 <!-- SMART SCRIPT -->
 <script>
 (function () {
-  var PIXEL_ID = '1626919985731030';
-  var CTA_EVENT = 'telegram_cta_click';   // Ads Manager's custom conversion is on THIS name - do not rename
-  var LEAD_VALUE = 0;                     // put a number here only if you want value-based optimisation
-  var urlParams = new URLSearchParams(window.location.search);
-  var clickId = urlParams.get('clickid');
+  /* ==========================================================================
+     META ADS TRACKING CONFIG  -  normal campaign chalaane ke liye kuch badalne
+     ki zaroorat nahi. Sirf ye flags optional hain.
+     ========================================================================== */
+  var PIXEL_ID        = '1626919985731030';   // Events Manager ka Dataset ID - yahi pixel ID hona chahiye
+  var CTA_EVENT       = 'telegram_cta_click'; // aapka Custom Conversion isi event name par bana hai
+  var LEAD_VALUE      = 0;                    // ek Telegram subscriber ka INR value (e.g. 250) -> value-based optimisation on
+  var CURRENCY        = 'INR';
+  var PREDICTION_ZONE = 'IN';                  // Meta lead quality kis geo ke liye predict kare
+  var COUNT_META_ONLY = true;                  // true = conversion sirf Meta-ad traffic se count ho (Adsterra/direct se nahi) -> clean signal
+  var DEDUPE_HOURS    = 24;                    // ek visitor per 24h sirf ek counted lead (double counting band)
+  var MIN_CLICK_MS    = 350;                   // isse tez click = bot / accidental tap, real lead nahi
+  var TELEGRAM_URL    = 'https://t.me/+3JPqigPpER42NWNl';
+  var POSTBACK_URL    = 'https://www.pbterra.com/name/Jiga_8824/at?subid_short='; // Adsterra - behaviour bilkul pehle jaisa
+
+  var qs          = new URLSearchParams(window.location.search);
+  var clickId     = qs.get('clickid');
+  var fbclid      = qs.get('fbclid');
+  var DISABLED    = qs.get('pxoff')  === '1';  // no tracking at all (QA / owner traffic)
+  var DEBUG       = qs.get('pxdebug') === '1'; // console log + de-dupe ignore (Test Events ke liye)
+  var loadAt      = Date.now();
   var isRedirecting = false;
+  var clickTrusted  = false;
 
-  // sessionStorage throws in Safari Private Browsing / blocked-cookie webviews.
-  // It used to kill the whole click handler (button stopped opening Telegram), so
-  // every tracking call is wrapped - tracking must never block the redirect.
-  function alreadyTracked() {
-    try { return !!sessionStorage.getItem('telegram_cta_clicked'); } catch (e) { return false; }
-  }
-  function markTracked() {
-    try { sessionStorage.setItem('telegram_cta_clicked', 'true'); } catch (e) {}
+  function utmVal(key) { var v = qs.get(key); return v ? String(v).slice(0, 64) : ''; }
+
+  // sessionStorage/locaStorage Safari private + blocked-cookie webviews me throw karte hain,
+  // isliye har access wrapped hai - tracking kabhi redirect nahi rok sakti.
+  function safe(fn, fb) { try { return fn(); } catch (e) { return fb; } }
+  function store() { return safe(function () { return window.localStorage || window.sessionStorage; }, null); }
+  function getItem(k) { var s = store(); return s ? safe(function () { return s.getItem(k); }, null) : null; }
+  function setItem(k, v) { var s = store(); if (s) safe(function () { s.setItem(k, v); }, null); }
+
+  // ---- kaun laaya is visitor ko: Meta ads / Adsterra / organic ----
+  var trafficSource = (function () {
+    var src = utmVal('utm_source').toLowerCase();
+    if (fbclid || /facebook|^fb$|instagram|\bmeta\b|audience_?network/.test(src)) return 'meta';
+    if (clickId || /adsterra|propeller|popads|pop.?ads|admesh|hilltopads|adnetwork/.test(src)) return 'other_network';
+    if (src) return 'utm:' + src.slice(0, 24);
+    return document.referrer ? 'referral' : 'direct';
+  })();
+  var fromMeta = trafficSource === 'meta';
+
+  // ---- invalid / bot traffic: inhe conversion kabhi nahi count karna ----
+  function isBot() {
+    if (DISABLED) return true;
+    var ua = navigator.userAgent || '';
+    if (navigator.webdriver === true) return true;
+    if (window._phantom || window.callPhantom || window.__nightmare || window.domAutomation ||
+        window.__selenium_execute || window.__webdriver_script_fn) return true;
+    return /(bot|crawler|spider|slurp|curl|wget|python|scrapy|phantom|headless|lighthouse|pagerender|snapshot|facebookexternalhit|whatsapp|telegrambot|discordbot|semrush|ahrefs|dotbot)/i.test(ua);
   }
 
-  function pixelFallback(name, params) {
-    var img = new Image();
-    img.src = 'https://www.facebook.com/tr?id=' + PIXEL_ID + '&ev=' + encodeURIComponent(name) +
-              (params ? '&ep=' + encodeURIComponent(JSON.stringify(params)) : '') + '&noscript=1';
+  // Real user input = browser marks the page as "user activated" OR the click is trusted.
+  // Dono me se koi ek mil gaya = insaan. Koi nahi = extension/injected click -> count nahi hoga.
+  function humanGesture(ev) {
+    if (safe(function () { return navigator.userActivation.hasBeenActive === true; }, false)) return true;
+    return !!(ev && ev.isTrusted === true);
   }
 
-  function sendCustomEvent(name, params) {
-    try {
-      if (typeof fbq === 'function') { fbq('trackCustom', name, params || {}); }
-      else { pixelFallback(name, params); }
-    } catch (e) {}
+  function qualifiedClick(ev) {
+    if (isBot()) return false;
+    if (!humanGesture(ev)) return false;                                    // scripted/automated click
+    if (Date.now() - loadAt < MIN_CLICK_MS) return false;                   // instant bot / mis-tap
+    if (document.visibilityState && document.visibilityState !== 'visible') return false; // prefetch / background tab
+    return true;
   }
 
-  function sendStandardEvent(name, params) {
-    try {
-      if (typeof fbq === 'function') { fbq('track', name, params || {}); }
-      else { pixelFallback(name, params); }
-    } catch (e) {}
+  var DEDUPE_KEY = 'jiga_cta_lead_ts';
+  function alreadyCounted() {
+    if (DEBUG) return false;
+    var t = parseInt(getItem(DEDUPE_KEY) || '0', 10);
+    return !!t && (Date.now() - t) < DEDUPE_HOURS * 3600000;
   }
+  function markCounted() { setItem(DEDUPE_KEY, String(Date.now())); }
 
-  // eventName = primary conversion (kept identical for manual + auto),
-  // sourceName = extra event that tells manual click and auto-redirect apart.
-  function fireJoinConversions(eventName, sourceName) {
-    if (alreadyTracked()) return;
-    sendCustomEvent(eventName);
-    if (sourceName) sendCustomEvent(sourceName);
-    sendStandardEvent('Lead', {
-      content_name: 'telegram_join',
-      content_category: 'telegram_lp',
-      currency: 'INR',
-      value: LEAD_VALUE
+  function makeEventId() {
+    var id = safe(function () { return (window.crypto && crypto.randomUUID) ? crypto.randomUUID() : null; }, null);
+    if (id) return id;
+    return 'xxxxxxxxyxxx4xxxyxxxxxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+      var r = Math.random() * 16 | 0; return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
     });
-    markTracked();
+  }
+
+  // ad-blocker / no-JS fallback: same event, same eventID -> Meta dedupe kar leta hai
+  function beacon(name, params, eid) {
+    var url = 'https://www.facebook.com/tr?id=' + PIXEL_ID + '&ev=' + encodeURIComponent(name) + '&v=2.3.3&noscript=1' +
+              (params ? '&ep=' + encodeURIComponent(JSON.stringify(params)) : '') +
+              (eid ? '&eid=' + encodeURIComponent(eid) : '');
+    safe(function () { var i = new Image(); i.src = url; }, null);
+  }
+
+  function send(name, params, eid, standard) {
+    if (DISABLED || isBot()) return;
+    safe(function () {
+      if (typeof fbq === 'function') {
+        if (eid) { standard ? fbq('track', name, params, { eventID: eid }) : fbq('trackCustom', name, params, { eventID: eid }); }
+        else     { standard ? fbq('track', name, params) : fbq('trackCustom', name, params); }
+      } else { beacon(name, params, eid); }
+    }, null);
+    if (DEBUG) console.log('[pixel]', standard ? 'standard' : 'custom', name, params, eid || '');
+  }
+
+  // Meta's lead-quality parameters (High-Quality Leads / value optimisation inhere padhta hai)
+  function leadParams(action) {
+    var p = {
+      content_name: 'nifty_banknifty_telegram_join',
+      content_category: 'stock_market_education',
+      content_type: 'lead',
+      currency: CURRENCY,
+      value: LEAD_VALUE,
+      num_items: 1,
+      lead_type: 'free_telegram_subscriber',
+      lead_source: trafficSource,
+      action: action,
+      has_fbclid: fbclid ? 1 : 0
+    };
+    if (PREDICTION_ZONE) p.prediction_zone = PREDICTION_ZONE;
+    if (LEAD_VALUE) p.predicted_ltv = LEAD_VALUE;
+    if (clickId) p.click_id = String(clickId).slice(0, 64);
+    var c = utmVal('utm_campaign'); if (c) p.campaign = c;
+    var m = utmVal('utm_medium');   if (m) p.medium = m;
+    var t = utmVal('utm_content');  if (t) p.creative = t;
+    return p;
+  }
+
+  function reportJoin(isAuto) {
+    if (DISABLED || isBot()) return;
+    var p = leadParams(isAuto ? 'auto_redirect' : 'cta_click');
+
+    // (a) har real join record hota hai - optimisation par use nahi hota, isse full picture rehta hai
+    send(isAuto ? 'telegram_cta_auto_redirect' : 'telegram_cta_manual_click', p, null, false);
+    if (isAuto) return;
+
+    // (b) ye do events hi Meta ko feed karte hain. Auto-redirect conversion NAHI hai
+    //     (user ne kuch kiya hi nahi) -> warna algorithm galat signal seekhta hai.
+    if (COUNT_META_ONLY && !fromMeta) return;
+    if (!clickTrusted || alreadyCounted()) return;
+
+    var eid = makeEventId();
+    setItem('jiga_last_event_id', eid);   // CAPI add karoge to event_id yahi reuse karna (dedupe)
+    send(CTA_EVENT, p, eid, false);
+    send('Lead', p, eid, true);
+    markCounted();
   }
 
   function sendAdsterraPostbackBackground() {
     if (clickId) {
-      fetch('https://www.pbterra.com/name/Jiga_8824/at?subid_short=' + encodeURIComponent(clickId), { mode: 'no-cors' }).catch(function(){}); 
+      fetch(POSTBACK_URL + encodeURIComponent(clickId), { mode: 'no-cors' }).catch(function(){});
     }
   }
 
@@ -709,37 +806,30 @@ Disclaimer: We are NOT a SEBI registered investment advisor. This content is str
     }
   }
 
-  function executeRedirect(isManualClick, customName) {
+  function executeRedirect(isManualClick) {
     if (isRedirecting) return;
     isRedirecting = true;
 
-    // Both manual clicks and the auto-redirect are now reported (auto joins used
-    // to be invisible to the ad account). Wrapped so tracking can never abort it.
-    try {
-      if (isManualClick) {
-        fireJoinConversions(customName || CTA_EVENT, 'telegram_cta_manual_click');
-      } else {
-        fireJoinConversions(CTA_EVENT, 'telegram_cta_auto_redirect');
-      }
-    } catch (e) {}
-
+    reportJoin(!isManualClick);
     sendAdsterraPostbackBackground();
 
-    var targetUrl = 'https://t.me/+3JPqigPpER42NWNl';
-
     setTimeout(function() {
-      openTelegram(targetUrl);
+      openTelegram(TELEGRAM_URL);
     }, 400);
   }
 
   // Handle Manual Button Click
   var joinBtn = document.getElementById('telegram-join-button');
   if (joinBtn) {
+    // button ka data-fb-custom attribute event name set karta hai (pehle ignore ho raha tha)
+    var btnEvent = joinBtn.getAttribute('data-fb-custom');
+    if (btnEvent) CTA_EVENT = btnEvent;
+
     joinBtn.addEventListener('click', function(event) {
       event.preventDefault();
-      var customName = joinBtn.getAttribute('data-fb-custom');
+      clickTrusted = qualifiedClick(event);
       document.getElementById('redirect-timer').innerHTML = "Opening Telegram...";
-      executeRedirect(true, customName);
+      executeRedirect(true);
     });
   }
 
@@ -760,7 +850,7 @@ Disclaimer: We are NOT a SEBI registered investment advisor. This content is str
     if (timeLeft <= 0) {
       clearInterval(countdownTimer);
       document.getElementById('redirect-timer').innerHTML = "Opening Telegram...";
-      executeRedirect(false, 'Auto_Timer_Redirect');
+      executeRedirect(false);
     } else {
       if(timerElement) timerElement.innerText = timeLeft;
     }
