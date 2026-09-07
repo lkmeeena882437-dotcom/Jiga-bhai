@@ -13,18 +13,18 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 
 fbq('init', '1626919985731030');
 fbq('track', 'PageView');
-fbq('track', 'ViewContent');
+fbq('track', 'ViewContent', {content_name: 'JIGA BHAI - Free Telegram Market Updates', content_category: 'telegram_lp', currency: 'INR', value: 0});
 </script>
 
 <noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1438242611690691&ev=PageView&noscript=1"
+src="https://www.facebook.com/tr?id=1626919985731030&ev=PageView&noscript=1"
 /></noscript>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>JIGA BHAI | ગુજરાતી વેપારી</title>
 
-<link rel="preload" href="https://i.ibb.co/G34Zht3w/IMG-20260510-WA0022.jpg" as="image">
+<link rel="preload" href="https://i.ibb.co/MxcB7VJm/df96da67-7eb3-410f-a4a0-5151077f9571.png" as="image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -644,20 +644,55 @@ Disclaimer: We are NOT a SEBI registered investment advisor. This content is str
 <script>
 (function () {
   var PIXEL_ID = '1626919985731030';
+  var CTA_EVENT = 'telegram_cta_click';   // Ads Manager's custom conversion is on THIS name - do not rename
+  var LEAD_VALUE = 0;                     // put a number here only if you want value-based optimisation
   var urlParams = new URLSearchParams(window.location.search);
   var clickId = urlParams.get('clickid');
   var isRedirecting = false;
 
-  function fireJoinConversions(customName) {
-    if (!sessionStorage.getItem('telegram_cta_clicked')) {
-      if (typeof fbq === 'function') {
-        fbq('trackCustom', 'telegram_cta_click');
-      } else {
-        var img = new Image();
-        img.src = 'https://www.facebook.com/tr?id=' + PIXEL_ID + '&ev=telegram_cta_click&noscript=1';
-      }
-      sessionStorage.setItem('telegram_cta_clicked', 'true');
-    }
+  // sessionStorage throws in Safari Private Browsing / blocked-cookie webviews.
+  // It used to kill the whole click handler (button stopped opening Telegram), so
+  // every tracking call is wrapped - tracking must never block the redirect.
+  function alreadyTracked() {
+    try { return !!sessionStorage.getItem('telegram_cta_clicked'); } catch (e) { return false; }
+  }
+  function markTracked() {
+    try { sessionStorage.setItem('telegram_cta_clicked', 'true'); } catch (e) {}
+  }
+
+  function pixelFallback(name, params) {
+    var img = new Image();
+    img.src = 'https://www.facebook.com/tr?id=' + PIXEL_ID + '&ev=' + encodeURIComponent(name) +
+              (params ? '&ep=' + encodeURIComponent(JSON.stringify(params)) : '') + '&noscript=1';
+  }
+
+  function sendCustomEvent(name, params) {
+    try {
+      if (typeof fbq === 'function') { fbq('trackCustom', name, params || {}); }
+      else { pixelFallback(name, params); }
+    } catch (e) {}
+  }
+
+  function sendStandardEvent(name, params) {
+    try {
+      if (typeof fbq === 'function') { fbq('track', name, params || {}); }
+      else { pixelFallback(name, params); }
+    } catch (e) {}
+  }
+
+  // eventName = primary conversion (kept identical for manual + auto),
+  // sourceName = extra event that tells manual click and auto-redirect apart.
+  function fireJoinConversions(eventName, sourceName) {
+    if (alreadyTracked()) return;
+    sendCustomEvent(eventName);
+    if (sourceName) sendCustomEvent(sourceName);
+    sendStandardEvent('Lead', {
+      content_name: 'telegram_join',
+      content_category: 'telegram_lp',
+      currency: 'INR',
+      value: LEAD_VALUE
+    });
+    markTracked();
   }
 
   function sendAdsterraPostbackBackground() {
@@ -666,21 +701,34 @@ Disclaimer: We are NOT a SEBI registered investment advisor. This content is str
     }
   }
 
+  function openTelegram(targetUrl) {
+    try {
+      window.top.location.href = targetUrl;
+    } catch (e) {
+      window.location.href = targetUrl;  // iframe / restricted webview fallback
+    }
+  }
+
   function executeRedirect(isManualClick, customName) {
     if (isRedirecting) return;
     isRedirecting = true;
-    
-    // ONLY FIRE PIXEL ON MANUAL CLICK
-    if (isManualClick) {
-        fireJoinConversions(customName || 'telegram_cta_click');
-    }
-    
+
+    // Both manual clicks and the auto-redirect are now reported (auto joins used
+    // to be invisible to the ad account). Wrapped so tracking can never abort it.
+    try {
+      if (isManualClick) {
+        fireJoinConversions(customName || CTA_EVENT, 'telegram_cta_manual_click');
+      } else {
+        fireJoinConversions(CTA_EVENT, 'telegram_cta_auto_redirect');
+      }
+    } catch (e) {}
+
     sendAdsterraPostbackBackground();
 
     var targetUrl = 'https://t.me/+3JPqigPpER42NWNl';
-    
+
     setTimeout(function() {
-      window.top.location.href = targetUrl;
+      openTelegram(targetUrl);
     }, 400);
   }
 
