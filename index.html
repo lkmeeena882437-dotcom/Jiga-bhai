@@ -59,15 +59,8 @@ h1{font-size:clamp(18px,5vw,24px);font-weight:900;line-height:1.1;color:var(--te
 @media(max-width:350px){.main-container{padding-left:12px;padding-right:12px}.title-row{gap:4px}h1{font-size:18px}.subtitle{font-size:11px}.hook-sub{padding:0}.legal-footer{gap:2px 4px}.sep{display:none}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
 
-/* Explicit optional measurement choice; no Meta script until affirmative choice. */
-.measurement-setting{width:100%;padding:7px 9px;margin-top:4px;border:1px solid #e2e8f0;background:#f8fafc;border-radius:11px;text-align:left}
-.measurement-setting label{display:flex;align-items:flex-start;gap:7px;color:#475569;font-size:clamp(9px,2.25vw,10px);font-weight:550;line-height:1.35;cursor:pointer}
-.measurement-setting input{width:15px;height:15px;flex:0 0 15px;accent-color:#007aff;margin-top:1px;cursor:pointer}
-.measurement-setting strong{color:#334155;font-weight:750}
-.measurement-setting a{color:#246da8;font-size:9px;font-weight:700;text-decoration:underline}
 .legal-footer [data-policy]{cursor:pointer}
 @media(max-height:760px){html,body{height:auto;min-height:100svh;overflow-x:hidden;overflow-y:auto}body{align-items:flex-start;padding:8px 0 14px}.main-container{max-height:none;margin:0 auto}.corner-badge{display:none}}
-@media(max-width:350px){.measurement-setting label{font-size:9px}}
 </style>
 </head>
 <body>
@@ -87,10 +80,6 @@ h1{font-size:clamp(18px,5vw,24px);font-weight:900;line-height:1.1;color:var(--te
   JOIN FREE TELEGRAM
   </a>
   <div class="btn-micro">Free Channel Access • Separate Offerings Optional</div>
-  <div class="measurement-setting" aria-label="Optional advertising measurement choice">
-    <label for="measurement-choice"><input type="checkbox" id="measurement-choice"><span><strong>Optional Meta measurement</strong> — Allow analytics and measurement of an attributable Telegram join. Not required to join. <a href="#privacy-policy" data-policy="privacy">Privacy details</a>.</span></label>
-  </div>
-
   <a class="support-link" href="https://t.me/Jiga_Bhai_Gujrati_Trader_bot" id="support-link">💬 Contact Support</a>
   <div class="disclaimer">Market commentary may include chart levels and opinions; none guarantees a result. Trading carries risk. Joining the channel is free; separate paid services, if offered, require their own clear terms.</div>
   <nav class="legal-footer" aria-label="Legal links">
@@ -111,95 +100,22 @@ h1{font-size:clamp(18px,5vw,24px);font-weight:900;line-height:1.1;color:var(--te
 <script>
 (function(){
   'use strict';
+  // One-click visitor flow: website -> Worker -> one-use Telegram invite.
+  // Confirmed memberships are recorded automatically by the Telegram webhook.
+  // No Meta Pixel, ad-click identifier forwarding, or automatic Meta Lead events.
   const WORKER_JOIN = 'https://crimson-haze-97ce.bogboss10001.workers.dev/join';
-  const PIXEL_ID = '1626919985731030';
-  const CONSENT_ENDPOINT = 'https://crimson-haze-97ce.bogboss10001.workers.dev/consent';
-  // File previews do not send Pixel calls or consent tokens. Only the approved HTTPS domain can enable measurement.
-  const IS_APPROVED_HOST = location.protocol === 'https:' &&
-    /^(www\.)?gujratitraderx\.in$/i.test(location.hostname);
   const button = document.getElementById('telegram-join-button');
-  const consentInput = document.getElementById('measurement-choice');
-  const qs = new URLSearchParams(location.search);
-  let pixelInitialized = false;
-  let consent = false; // Always starts off; visitors actively choose this session.
-  let grantToken = '';
-  let grantSequence = 0;
-  consentInput.checked = false;
-
-  function hasConsent() { return IS_APPROVED_HOST && consent; }
-
-  function updateLink() {
-    const url = new URL(WORKER_JOIN);
-    // Campaign metadata only, never Telegram identity or financial profile.
-    for (const key of ['utm_source','utm_campaign','utm_content']) {
-      const value = qs.get(key);
-      if (value) url.searchParams.set(key, value.slice(0, 80));
-    }
-    // Never forward fbclid without a browser opt-in AND a Worker-issued grant.
-    if (hasConsent() && grantToken) {
-      url.searchParams.set('consent_token', grantToken);
-      const fbclid = qs.get('fbclid');
-      if (fbclid) url.searchParams.set('fbclid', fbclid.slice(0, 256));
-    }
-    button.href = url.toString();
+  const qs = new URLSearchParams(window.location.search);
+  const joinUrl = new URL(WORKER_JOIN);
+  // Ordinary campaign labels only; no fbclid, visitor profile or advertising identifier.
+  for (const key of ['utm_source', 'utm_campaign', 'utm_content']) {
+    const value = qs.get(key);
+    if (value) joinUrl.searchParams.set(key, value.slice(0, 80));
   }
-
-  function loadPixelIfAllowed() {
-    if (!hasConsent() || pixelInitialized) return;
-    pixelInitialized = true;
-    // Meta Pixel loads only after the user explicitly opts in or returns with
-    // a saved opt-in on the actual permitted HTTPS website origin.
-    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){
-    n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];
-    t=b.createElement(e);t.async=!0;t.src=v;
-    s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
-    (window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
-    window.fbq('init', PIXEL_ID);
-    window.fbq('track', 'PageView');
-  }
-
-  async function requestMeasurementGrant(sequence) {
-    try {
-      const response = await fetch(CONSENT_ENDPOINT, {
-        method: 'POST', mode: 'cors', credentials: 'omit', cache: 'no-store',
-        headers: { 'content-type': 'application/json' },
-        body: JSON.stringify({purpose: 'verified_join_ads_measurement', decision: 'allow'})
-      });
-      if (!response.ok) return;
-      const result = await response.json();
-      if (sequence === grantSequence && hasConsent() && /^[a-f0-9]{64}$/.test(result.token || '')) {
-        grantToken = result.token;
-        updateLink();
-      }
-    } catch (_e) {
-      // Telegram joining continues without ad-click attribution.
-    }
-  }
-
-  consentInput.addEventListener('change', function(){
-    consent = consentInput.checked;
-    grantToken = '';
-    grantSequence++;
-    updateLink();
-    if (consent) {
-      loadPixelIfAllowed();
-      if (hasConsent()) requestMeasurementGrant(grantSequence);
-    }
-    // Unchecking blocks new page events and discards the one-use grant.
-    // Already delivered browser tracking cannot be retroactively withdrawn.
-  });
-
-  // Don't intercept navigation: the Worker issues a 302 directly to Telegram.
-  // A click is NOT a Lead. Meta Lead is reserved for confirmed bot joins.
-  button.addEventListener('click', function(){
-    if (hasConsent() && pixelInitialized && typeof window.fbq === 'function') {
-      window.fbq('trackCustom', 'TelegramOutboundClick');
-    }
-  });
+  button.href = joinUrl.toString();
 
   const policyText = {
-    privacy:{title:'Privacy Policy',html:`<p><strong>Operator:</strong> JIGA BHAI / Learning With ગુજરાતી વેપારી. For privacy inquiries use the <a href="https://t.me/Jiga_Bhai_Gujrati_Trader_bot" target="_blank" rel="noopener noreferrer">listed support channel</a>. Contact the listed support channel for operator and privacy inquiries.</p><h3>How this page works</h3><p>The Telegram button directs your browser through our Cloudflare Worker to a one-use Telegram invitation. The administrator bot receives Telegram membership updates. Invite link, click time, join time and limited campaign information can be stored to confirm a new join, subject to a limited retention period.</p><h3>Optional advertising measurement</h3><p>Meta advertising measurement is optional and not required to join. Unless you affirmatively select the checkbox on this page, this page does not load Meta Pixel or forward your Meta click identifier to the Worker. With your affirmative permission on the approved website, it may send a page visit and Telegram outbound-click event. To match a verified Telegram join with a Meta ad click, the Worker issues a short-lived, one-use measurement permission code. Reporting of confirmed joins to Meta is only enabled after technical tests and applicable privacy requirements are satisfied.</p><h3>Withdraw permission</h3><p>Uncheck “Optional Meta measurement” to prevent further optional tracking from this page. Previously placed browser cookies or previously sent events cannot be undone from this page; you may clear browser cookies and contact support for privacy inquiries.</p><h3>Services and retention</h3><p>Cloudflare hosts the redirect and a short-lived invite-to-join record; Telegram handles membership; Meta is used only when optional advertising measurement is enabled and properly configured. Do not share financial account details, passwords, or OTPs. Records are subject to the published retention practices; contact support for privacy inquiries.</p>`},
+    privacy:{title:'Privacy Policy',html:`<p><strong>Operator:</strong> JIGA BHAI / Learning With ગુજરાતી વેપારી. For privacy inquiries contact the <a href="https://t.me/Jiga_Bhai_Gujrati_Trader_bot" target="_blank" rel="noopener noreferrer">official support channel</a>.</p><h3>How joining works</h3><p>The JOIN FREE TELEGRAM button goes through our Cloudflare Worker, which creates a short-lived, one-use Telegram invitation. If you join, an administrator bot receives a Telegram membership update so we can confirm the join. The system records the invite reference, link creation time, confirmed join time and limited campaign labels when present. No second button or advertising checkbox is required to join.</p><h3>Advertising measurement</h3><p>This website does not currently load the Meta Pixel or forward Meta ad-click identifiers such as fbclid. A click on the Telegram button is not automatically reported to Meta as a Lead. Confirmed Telegram joins are recorded internally; advertising-conversion reporting is currently disabled. Any future advertising measurement will require an updated, accurate notice and an appropriate lawful basis or permission where required.</p><h3>Data retention and choices</h3><p>Records are used for join verification and operational analytics. Data may be processed by Cloudflare and Telegram; retention depends on the configured database cleanup schedule. Contact support for privacy and data inquiries. Never share financial account details, passwords or OTPs to join.</p>`},
     terms:{title:'Terms &amp; Conditions',html:`<p>Joining the advertised Telegram channel is free. It provides market observations, chart-related content, educational commentary and risk-awareness information. Some content may discuss trading levels or opinions; these do not guarantee outcomes.</p><h3>Separate offerings</h3><p>Additional products or paid groups, if offered, are separate from free channel membership. Any purchase must have its own accurate description, total fees, refund/cancellation terms and applicable legal/regulatory disclosures provided before payment.</p><h3>Risk &amp; responsibility</h3><p>Markets can cause financial losses. No guaranteed returns or risk-free trading is offered. Any activity involving regulated financial services or investment recommendations must follow the relevant law and authorization requirements. Channel content and landing page claims must reflect the actual services.</p>`},
     refund:{title:'Refund &amp; Cancellation',html:`<p>Joining or leaving the advertised free Telegram channel does not involve a channel membership charge.</p><h3>Separate paid services</h3><p>Separate products, services or memberships may be advertised independently. Their actual prices, cancellation windows, and refund eligibility must be disclosed by the operator before any purchase. Do not infer a refund guarantee from this free community page.</p>`},
     contact:{title:'Contact Information',html:`<p><strong>Community:</strong> JIGA BHAI / Learning With ગુજરાતી વેપારી.</p><p><strong>Website:</strong> gujratitraderx.in .</p><p><strong>Support:</strong> <a href="https://t.me/Jiga_Bhai_Gujrati_Trader_bot" target="_blank" rel="noopener noreferrer">@Jiga_Bhai_Gujrati_Trader_bot</a></p><p><strong>Advertising partner:</strong> Adstele Agency is credited on this page; it is not a guarantee of regulatory authorization.</p><p>For operator and privacy inquiries use the listed official support channel. Additional legally required operator or regulatory details must be provided where applicable.</p>`}
@@ -230,8 +146,6 @@ h1{font-size:clamp(18px,5vw,24px);font-weight:900;line-height:1.1;color:var(--te
   closeButton.addEventListener('click', closePolicy);
   overlay.addEventListener('click', e => { if (e.target === overlay) closePolicy(); });
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closePolicy(); });
-  updateLink();
-  loadPixelIfAllowed();
 })();
 </script>
 </body></html>
