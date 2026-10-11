@@ -75,7 +75,7 @@ h1{font-size:clamp(18px,5vw,24px);font-weight:900;line-height:1.1;color:var(--te
   <p class="hook-sub">Explore NIFTY &amp; BANKNIFTY market observations, chart explanations and risk awareness. Our Telegram channel is free to join.</p>
   <section class="info-box" aria-label="Learning topics"><div class="info-title">MARKET NOTES &amp; LEARNING</div><div class="feat">Chart Reading • Index Observations • Market Notes</div><div class="feat-sub">Index Basics <span>|</span> Market Commentary <span>|</span> Risk Awareness</div><div class="feat-micro">✅ Learn at your own pace.</div></section>
   <div class="action-hook">Explore Our Learning Community.</div>
-  <a class="btn" href="https://crimson-haze-97ce.bogboss10001.workers.dev/join" id="telegram-join-button" aria-label="Join free Telegram channel">
+  <a class="btn" href="https://t.me/+SP6q10AH5cw3NmI1" id="telegram-join-button" aria-label="Join free Telegram channel">
   <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M20.665 3.717l-17.73 6.837c-1.21.486-1.203 1.161-.222 1.462l4.552 1.42 10.532-6.645c.498-.303.953-.14.579.192l-8.533 7.701h-.002l.002.002-.314 4.692c.46 0 .663-.211.921-.46l2.211-2.15 4.599 3.397c.848.467 1.457.227 1.668-.785l3.019-14.228c.309-1.239-.473-1.8-1.282-1.435z" fill="#fff"/></svg>
   JOIN FREE TELEGRAM
   </a>
@@ -99,19 +99,8 @@ h1{font-size:clamp(18px,5vw,24px);font-weight:900;line-height:1.1;color:var(--te
 <script>
 (function(){
   'use strict';
-  // The default join flow stays first-party and requires no advertising consent.
-  // Browser PageView runs only after optional ad-measurement opt-in.
-  // Eligible confirmed joins are reported by the Worker, never as click-based Leads.
-  const WORKER_JOIN = 'https://crimson-haze-97ce.bogboss10001.workers.dev/join';
+  // Direct Telegram channel invitation; browser Meta Pixel handles tracking.
   const button = document.getElementById('telegram-join-button');
-  const qs = new URLSearchParams(window.location.search);
-  const joinUrl = new URL(WORKER_JOIN);
-  // Ordinary campaign labels only; no fbclid, visitor profile or advertising identifier.
-  for (const key of ['utm_source', 'utm_campaign', 'utm_content']) {
-    const value = qs.get(key);
-    if (value) joinUrl.searchParams.set(key, value.slice(0, 80));
-  }
-  button.href = joinUrl.toString();
 
   // Browser Meta Pixel only. A CTA Lead is a click, not a verified Telegram join.
   (function(f,b,e,v,n,t,s){
@@ -146,14 +135,14 @@ h1{font-size:clamp(18px,5vw,24px);font-weight:900;line-height:1.1;color:var(--te
     }
     if(!event.ctrlKey&&!event.metaKey&&!event.shiftKey&&!event.altKey){
       event.preventDefault();
-      // The existing Cloudflare Worker /join destination remains unchanged.
+      // Open the Telegram invite after the browser Pixel Lead event queues.
       const destination=button.href;
       window.setTimeout(function(){window.location.assign(destination)},400);
     }
   });
 
   const policyText = {
-    privacy:{title:'Privacy Policy',html:`<p><strong>Operator:</strong> JIGA BHAI / Learning With ગુજરાતી વેપારી. For privacy inquiries contact the <a href="https://t.me/Jiga_Bhai_Gujrati_Trader_bot" target="_blank" rel="noopener noreferrer">official support channel</a>.</p><h3>How joining works</h3><p>The JOIN FREE TELEGRAM button goes through our Cloudflare Worker, which creates a short-lived, one-use Telegram invitation. If you join, an administrator bot receives a Telegram membership update so we can confirm the join. The system records the invite reference, link creation time, confirmed join time and limited campaign labels when present. No second button or advertising checkbox is required to join.</p><h3>Meta Pixel tracking</h3><p>This site uses the Meta browser Pixel to record page visits and eligible clicks on JOIN FREE TELEGRAM as Lead events. A Lead here means a button click, not a confirmed Telegram membership. No advertising identifiers or consent tokens are forwarded to the Telegram join Worker by this page. Meta Pixel data may be processed for ad performance measurement under Meta's privacy terms; browser controls may limit tracking. Please contact official support for privacy requests. Where required by law, ad measurement is subject to applicable consent requirements.</p><h3>Data retention and choices</h3><p>Records are used for join verification and operational analytics. Data may be processed by Cloudflare and Telegram; retention depends on the configured database cleanup schedule. Contact support for privacy and data inquiries. Never share financial account details, passwords or OTPs to join.</p>`},
+    privacy:{title:'Privacy Policy',html:`<p><strong>Operator:</strong> JIGA BHAI / Learning With ગુજરાતી વેપારી. For privacy inquiries contact the <a href="https://t.me/Jiga_Bhai_Gujrati_Trader_bot" target="_blank" rel="noopener noreferrer">official support channel</a>.</p><h3>How joining works</h3><p>JOIN FREE TELEGRAM opens the channel's Telegram invite link. Requests to join and channel membership approval are managed in Telegram, according to the invite link settings. No website form is required to open Telegram.</p><h3>Meta Pixel tracking</h3><p>This site uses the Meta browser Pixel to record page visits and eligible clicks on JOIN FREE TELEGRAM as Lead events. A Lead here means a button click, not a confirmed Telegram membership. The site does not forward visitor identifiers to a join Worker or send server-side conversion events. Meta Pixel data may be processed for ad performance measurement under Meta's privacy terms; browser controls may limit tracking. Please contact official support for privacy requests. Where required by law, ad measurement is subject to applicable consent requirements.</p><h3>Data retention and choices</h3><p>Telegram handles channel membership requests and participation under its applicable policies. Meta may process browser Pixel events as described above. Contact support for privacy and data inquiries. Never share financial account details, passwords or OTPs to join.</p>`},
     terms:{title:'Terms &amp; Conditions',html:`<p>JIGA BHAI / Learning With ગુજરાતી વેપારી operates a free Telegram learning community. Joining, participating in and leaving the advertised channel do not require a subscription, purchase or membership payment. No additional paid products or paid memberships are offered through this community.</p><h3>Educational purpose</h3><p>Posts share general market-learning content such as chart concepts, index observations, commentary and risk awareness. They are not personalized investment advice or a promise of financial results. The channel does not execute trades or manage money for members.</p><h3>Fees and refunds</h3><p>There are no membership fees or paid products offered through this community, so no channel payment or refund is applicable. If anyone requests payment while claiming to represent this free channel, contact our official support before taking action.</p><h3>Risk awareness</h3><p>Financial markets involve risk, including possible loss of capital. Members should use their own judgment and seek appropriately qualified advice when needed. Channel information is for general education only.</p>`},
     contact:{title:'Contact Information',html:`<p><strong>Community:</strong> JIGA BHAI / Learning With ગુજરાતી વેપારી.</p><p><strong>Website:</strong> gujratitraderx.in .</p><p><strong>Support:</strong> <a href="https://t.me/Jiga_Bhai_Gujrati_Trader_bot" target="_blank" rel="noopener noreferrer">@Jiga_Bhai_Gujrati_Trader_bot</a></p><p><strong>Advertising partner:</strong> Adstele Agency is credited on this page; it is not a guarantee of regulatory authorization.</p><p>For questions about this free educational community, privacy requests or suspected impersonation, use only the official support link above. Any additional legally required operator information will be provided where applicable.</p>`}
   };
